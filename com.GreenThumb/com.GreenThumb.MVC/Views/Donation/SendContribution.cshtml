@@ -1,0 +1,27 @@
+﻿@*Modified By: Ash Duhautois 05/04/2016
+    Formatted Styles*@
+
+@model com.GreenThumb.MVC.Models.SendContributionViewModel
+
+@{
+    ViewBag.Title = "SendContribution";
+}
+
+<h1>@Html.DisplayFor(m => m.NeedTitle)</h1>
+
+<div class="dark-div round">
+    @using (Html.BeginForm("SendContribution", "Donation", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.NeedID)
+    
+        <div class="form">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    
+        <input type="submit" value="Give" class="green-btn" />
+    }
+</div>
+

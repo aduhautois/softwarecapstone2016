@@ -1,0 +1,49 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@{Layout = "";}
+@model IEnumerable<com.GreenThumb.MVC.Models.MessageViewModelOutbox>
+
+
+
+@using (Html.BeginForm("Index", "Message", FormMethod.Post))
+{
+    if (Model != null)
+    {
+
+        <div class="messagebox">
+
+            <div class="messages">
+                @foreach (var message in Model)
+                {
+                    <div class="col-lg-2">
+                        @Html.CheckBoxFor(m => message.Delete)
+                        <p class="inline-block">@message.Date.ToString()</p>
+                    </div>
+                    <div class="col-lg-10">
+                        @Html.HiddenFor(m => message.MessageID)
+                        <h2 class="inline-block">From: </h2>
+                        <p class="inline-block">@message.Receiver</p>
+                        <br />
+                        <h2 class="inline-block">SUBJECT:</h2>
+                        <p class="inline-block">@message.Subject</p>
+                        <div class="message-content indent">
+                            @message.Content
+                        </div>
+                    </div>
+                    <br />
+                }
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Delete Selected" class="green-btn" />
+            <br />
+        </div>
+    }
+    else
+    {
+        <p>Your outbox is empty!</p>
+    }
+}
+
+

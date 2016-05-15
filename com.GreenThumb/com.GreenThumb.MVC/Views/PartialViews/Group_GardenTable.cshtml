@@ -1,0 +1,35 @@
+﻿@*
+    <summary>
+     Partial View table of gardens by group.
+     Author: Chris Schwebach
+     Date:  4/03/2016
+     Modified by: Ashlyn Duhautois 04/15/2016
+        Changed table headers -> user friendly
+     Modified by: Ashlyn Duhautois 05/04/2016
+        Adjusted model formatting, removed tables
+     </summary>
+     <returns>GardenList by group</returns>
+*@
+
+
+@model com.GreenThumb.BusinessObjects.Group
+
+@foreach (com.GreenThumb.BusinessObjects.Garden GardenInfo in Model.GardenList)
+{
+    <div class="group-members">
+        <h2>@Html.ActionLink(GardenInfo.GardenName, "GardenDetail", "Garden", new { id = GardenInfo.GardenID }, new { @class = "" })</h2>
+
+        <p class="text-right">Region: @GardenInfo.GardenRegion</p>
+        <div class="text-right"> Garden Description: @Html.Raw(GardenInfo.GardenDescription)</div>
+
+        @*<p class="text-right">Region: @GardenInfo.GardenRegion</p>*@
+       
+        @*<p class="text-right">Garden Description: @GardenInfo.GardenDescription</p>*@
+        @*<h2>
+            @Html.ActionLink("View Tasks", "ViewTask", "GardenTask", new { gardenID = GardenInfo.GardenID }, new {@id="viewTask" })
+        </h2>*@
+        <button class="green-btn" onclick="location.href='@Url.Action("ViewTask", "GardenTask", new { gardenID = GardenInfo.GardenID, @id = "viewTask" })'">View Tasks</button>
+
+    </div>
+    
+}

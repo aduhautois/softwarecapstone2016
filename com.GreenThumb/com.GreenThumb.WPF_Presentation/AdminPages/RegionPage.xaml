@@ -1,0 +1,83 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.AdminPages.RegionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d"
+      d:DesignHeight="409.511" d:DesignWidth="671.388"
+	Title="RegionPage">
+
+    <Grid Margin="40">
+        <Image Source="images/usda_plant.jpg" HorizontalAlignment="Left" Height="301" Margin="26,26,0,0" VerticalAlignment="Top" Width="485"/>
+
+        <TextBox x:Name="txtRegionID" HorizontalAlignment="Left" Height="29" Margin="538,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" IsEnabled="False"/>
+        <Label x:Name="Region_Selected" Content="Region ID" HorizontalAlignment="Left" Margin="473,94,0,0" VerticalAlignment="Top" Width="63"/>
+        <TextBox x:Name="txtUserID" HorizontalAlignment="Left" Height="27" Margin="538,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
+        <Label Content="User ID" HorizontalAlignment="Left" Margin="487,24,0,0" VerticalAlignment="Top"/>
+        <Label Content="User Name" HorizontalAlignment="Left" Margin="469,58,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="28" Margin="540,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" IsEnabled="False"/>
+        <Button Style="{StaticResource button1}" x:Name="btnSave" Content="SAVE" HorizontalAlignment="Left" Margin="540,129,0,0" VerticalAlignment="Top" Width="99" Height="29" Click="btnSave_Click"/>
+        <ListBox Name="regions" HorizontalAlignment="Left" Height="166" Margin="534,172,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ListBox_SelectionChanged">
+            <ListBoxItem Content="Region 1"/>
+            <ListBoxItem Content="Region 2"/>
+            <ListBoxItem Content="Region 3"/>
+            <ListBoxItem Content="Region 4"/>
+            <ListBoxItem Content="Region 5"/>
+            <ListBoxItem Content="Region 6"/>
+            <ListBoxItem Content="Region 7"/>
+            <ListBoxItem Content="Region 8"/>
+            <ListBoxItem Content="Region 9"/>
+            <ListBoxItem Content="Region 10"/>
+        </ListBox>
+        <Label x:Name="lblMessage" Content="" HorizontalAlignment="Left" Margin="79,338,0,0" VerticalAlignment="Top" Width="359" Height="29"/>
+        <Button Style="{StaticResource button1}" x:Name="btnSearch" Content="GO!" HorizontalAlignment="Left" Margin="605,20,0,0" VerticalAlignment="Top" Width="34" Click="btnSearch_Click">
+        </Button>
+    </Grid>
+    <!--<Grid Margin="0,0,-8,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="470"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Source="images/usda_plant.jpg" HorizontalAlignment="Left" Height="301" Margin="26,26,0,0" VerticalAlignment="Top" Width="485"/>
+        <Grid Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="140"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="0" x:Name="txtRegionID" Height="29" TextWrapping="Wrap" Width="101" IsEnabled="False"/>
+            <Label Grid.Row="1" x:Name="Region_Selected" Content="Region ID" HorizontalAlignment="Left" Width="63"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtUserID" HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" Width="52"/>
+            <Label Grid.Row="2" Content="User ID" />
+            <Label Grid.Row="3" Content="User Name" />
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtUserName" Height="28" TextWrapping="Wrap" Width="99" IsEnabled="False"/>
+            <Button Grid.Row="5" Grid.Column="1" Style="{StaticResource button1}" x:Name="btnSave" Content="SAVE" Width="99" Height="29" Click="btnSave_Click"/>
+            <ListBox Grid.Row="4" Grid.Column="1" Name="regions" Width="100" SelectionChanged="ListBox_SelectionChanged">
+                <ListBoxItem Content="Region 1"/>
+                <ListBoxItem Content="Region 2"/>
+                <ListBoxItem Content="Region 3"/>
+                <ListBoxItem Content="Region 4"/>
+                <ListBoxItem Content="Region 5"/>
+                <ListBoxItem Content="Region 6"/>
+                <ListBoxItem Content="Region 7"/>
+                <ListBoxItem Content="Region 8"/>
+                <ListBoxItem Content="Region 9"/>
+                <ListBoxItem Content="Region 10"/>
+            </ListBox>
+            <Label x:Name="lblMessage" Content="" HorizontalAlignment="Left" Margin="79,338,0,0" VerticalAlignment="Top" Width="359" Height="29"/>
+            <Button Grid.Row="1" Grid.Column="1" Margin="50,0,0,0" Style="{StaticResource button1}" x:Name="btnSearch" Content="GO!" Width="34" Click="btnSearch_Click">
+
+            </Button>
+        </Grid>
+    </Grid>-->
+</Page>

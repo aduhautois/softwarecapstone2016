@@ -1,0 +1,13 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@{
+    ViewBag.Title = "Confirm Email";
+}
+
+<h1>@ViewBag.Title</h1>
+<div class="dark-div round">
+    <p>
+        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>

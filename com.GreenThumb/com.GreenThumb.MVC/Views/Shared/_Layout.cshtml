@@ -1,0 +1,66 @@
+﻿@*Modified by: Ashlyn Duhautois 04/15/2016
+    Styles + rearranging of elements
+*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - GreenThumb</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link type="text/css" rel="stylesheet" href="~/Content/Styles.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/animate.css" />
+    <link rel="shortcut icon" type="image/ico" href="http://www.pixeledpaper.com/shared/img/farmlogoteeny.ico" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("GreenThumb", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Group", "Index", "Group")</li>
+                    <li>@Html.ActionLink("Garden", "Index", "Garden")</li>
+                    <li>@Html.ActionLink("Tasks", "Index", "GardenTask")</li>
+                    <li>@Html.ActionLink("Expert", "Index", "Expert")</li>
+                    <li>@Html.ActionLink("Donate", "Index", "Donation")</li>
+                    <li>@Html.ActionLink("Articles", "Articles", "Articles")</li>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Messages", "Index", "Message")</li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - GreenThumb Community Gardens <img style="height: 40px;"src="http://www.pixeledpaper.com/shared/img/farmlogo.png" /></p>
+        </footer>
+    </div>
+
+
+</body>
+</html>

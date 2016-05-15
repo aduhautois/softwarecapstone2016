@@ -1,0 +1,34 @@
+﻿@* Created By: Trent Cullinan 04/14/16 *@
+@* Modified By: Ash Duhautois 05/04/16
+    Formatted Styles*@
+
+@model com.GreenThumb.MVC.Models.CreateNeedViewModel
+@{
+    ViewBag.Title = "AddNeed";
+}
+
+<h1>Add Need</h1>
+<div class="dark-div round">
+    @using (Html.BeginForm("AddNeed", "Garden", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            @Html.HiddenFor(m => m.GardenId)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            <br />
+            <br />
+        </div>
+        <div>
+            <input type="submit" value="Create Need" class="green-btn" />
+        </div>
+    }
+</div>

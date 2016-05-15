@@ -1,0 +1,14 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.GardenPages.CompleteTask"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d"
+	Title="CompleteTask" Height="290" Width="836">
+
+    <Grid Margin="40">
+        <DataGrid x:Name="grdTasks" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="172" Width="808" SelectionMode="Single" />
+        <Button Style="{StaticResource button1}" Content="Complete Task" HorizontalAlignment="Left" Margin="480,187,0,0" VerticalAlignment="Top" Width="160" Click="CompleteSelectedTask_Click" Height="30"/>
+        <Button Style="{StaticResource button1}" Content="Show My Tasks" HorizontalAlignment="Left" Margin="224,187,0,0" VerticalAlignment="Top" Width="160" Click="ShowTasks_Click" Height="30"/>
+    </Grid>
+</Page>

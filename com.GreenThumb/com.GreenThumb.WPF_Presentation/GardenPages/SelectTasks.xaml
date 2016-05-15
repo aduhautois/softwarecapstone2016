@@ -1,0 +1,15 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.GardenPages.SelectTasks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="SelectTask" Height="280" Width="900">
+
+    <Grid Margin="40">
+        <DataGrid x:Name="grdTasks" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="172" Width="808" SelectionMode="Single" />
+        <Button Style="{StaticResource button1}" Content="Select Task" HorizontalAlignment="Left" Margin="480,187,0,0" VerticalAlignment="Top" Width="160" Click="SelecteTask_Click" Height="30"/>
+        <Button Style="{StaticResource button1}" Content="Show All Tasks" HorizontalAlignment="Left" Margin="224,187,0,0" VerticalAlignment="Top" Width="160" Click="ShowTasks_Click" Height="30"/>
+    </Grid>
+</Page>

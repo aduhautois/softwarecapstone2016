@@ -1,0 +1,19 @@
+﻿@*Created by: Nicholas King AND Trent Cullinan  04/03/2016
+     Modified by: Ashlyn Duhautois 04/15/2016
+        Disabled CreatedDate columns - not functional
+    Edited by: Ash Duhautois 05/04/2016
+        Formatted styling
+*@
+@using com.GreenThumb.MVC.Models;
+@model IEnumerable <GroupIndexViewModel.UserGroupViewModel>
+
+<h2>Groups open for joining:</h2>
+        @foreach (GroupIndexViewModel.UserGroupViewModel groupView in Model)
+        {
+            <div class="group-members">
+                <h2>@groupView.Name</h2>
+                <p class="text-right">Leader: @groupView.LeaderUserName</p>
+                <p class="text-right"><a href="mailto:@groupView.LeaderEmail">@groupView.LeaderEmail</a></p>
+                <button class="green-btn" onclick="location.href='@Url.Action("RequestJoinGroup", "Group", new { id = groupView.GroupId })'">Request to Join</button>
+            </div>
+        }

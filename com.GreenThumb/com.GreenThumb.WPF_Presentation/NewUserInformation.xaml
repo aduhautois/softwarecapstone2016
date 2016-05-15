@@ -1,0 +1,61 @@
+﻿<Window x:Class="com.GreenThumb.WPF_Presentation.NewUserInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NewUserInformation" Height="300" Width="300">
+    <Grid>
+        <TextBlock Margin="8,5,0,0">Please Enter the following information:</TextBlock>
+
+        <Grid HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Margin="10 20 0 0" Grid.Row="0" Grid.Column="0">First Name:</Label>
+            <Label Margin="10 10 0 0" Grid.Row="1" Grid.Column="0">Last Name:</Label>
+            <Label Margin="10 10 0 0" Grid.Row="2" Grid.Column="0">Email:</Label>
+            <Label Margin="10 10 0 0" Grid.Row="3" Grid.Column="0">Zip Code:</Label>
+            <Label Margin="10 10 0 0" Grid.Row="4" Grid.Column="0">Region:</Label>
+            <Button Name="btnSubmit" Margin="10 10 0 0" Content="Submit"  Grid.Row="5" Grid.Column="0" Click="btnSubmit_Click"/>
+            <Button Name="btnCancel" Margin="10 10 0 0" Content="Cancel"  Grid.Row="6" Grid.Column="0" Click="btnCancel_Click"/>
+        </Grid>
+        <Grid HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtbxFirstName" Grid.Row="0" Grid.Column="1" Margin="10 27 60 0" Width="100" Height="15"/>
+            <TextBox Name="txtbxLastName" Grid.Row="1" Grid.Column="1" Margin="10 17 60 0" Width="100" Height="15"/>
+            <TextBox Name="txtbxEmail" Grid.Row="2" Grid.Column="1" Margin="10 17 60 0" Width="100" Height="15"/>
+            <TextBox Name="txtbxZip" Grid.Row="3" Grid.Column="1" Margin="10 17 60 0" Width="100" Height="15"/>
+
+            <Menu Name="mnuRegion" Grid.Row="4" Grid.Column="1" Margin="10 30 60 0" Width="100" Height="15">
+                <MenuItem>East</MenuItem>
+                <MenuItem>West</MenuItem>
+                <MenuItem>Mid West</MenuItem>
+                <MenuItem>South East</MenuItem>
+                <MenuItem>South West</MenuItem>
+            </Menu>
+        </Grid>
+    </Grid>
+</Window>

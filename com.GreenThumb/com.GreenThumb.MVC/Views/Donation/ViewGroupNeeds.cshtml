@@ -1,0 +1,42 @@
+﻿@* Created By: Trent Cullinan 04/28/16 *@
+@* Modified By: Ash Duhautois 05/04/2016
+    Formatted styles*@
+
+@using com.GreenThumb.MVC.Models;
+@using com.GreenThumb.BusinessObjects;
+@model GroupNeedsDetailViewModel
+@{
+    ViewBag.Title = "ViewGroupNeeds";
+}
+
+<h1>Group Needs</h1>
+
+<div class="dark-div round">
+    @if (0 < Model.GardenSummaries.Count() && 0 < Model.ActiveNeeds.Count())
+    {
+        <h3>Gardens in group that need help</h3>
+
+            foreach(GardenNeedSummary summary in Model.GardenSummaries)
+            {
+                    <h2>@Html.ActionLink(summary.GardenName, "ViewGardenNeeds", "Donation", new { id = summary.GardenID }, null)</h2>
+                    <p class="text-right">Region: @summary.RegionID</p>
+                    <p>@Html.Raw(summary.Description)</p>
+                    <h2>Active Needs</h2>
+                    <p>@summary.ActiveNeeds</p>
+                    <h2>Completed Needs</h2>
+                    <p>@summary.CompletedNeeds</p>
+            }
+
+        <h3>Active Needs for group</h3>
+        @Html.Partial("~/Views/PartialViews/_NeedsAllowContribute.cshtml", Model.ActiveNeeds)
+    }
+    else
+    {
+        <div>
+            <p class="h3">No gardens with needs found</p>
+        </div>
+    }
+</div>
+
+
+

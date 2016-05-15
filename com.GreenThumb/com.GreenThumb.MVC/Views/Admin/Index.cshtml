@@ -1,0 +1,18 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Administration</h1>
+
+<div class="dark-div round">
+    <div>
+        @Html.ActionLink("Manage Experts", "MngExpert", "Admin")
+    </div>
+    <br />
+    <div>
+        @Html.ActionLink("View Approved Experts", "Experts", "Admin")
+    </div>
+</div>

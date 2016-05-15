@@ -1,0 +1,27 @@
+﻿@* Created by: Trent Cullinan 03/31/16 
+   Modified by: Nicholas King 04/03/2016
+        Converted into partial page and updated to use new viewmodel
+   Modified by: Ashlyn Duhautois 04/15/2016
+        Hid 'Created On' field - not functional
+   Modified by: Ash Duhautois 05/04/2016
+        Removed tables
+*@
+@using com.GreenThumb.MVC.Models;
+@model IEnumerable<GroupIndexViewModel.UserGroupViewModel>
+
+@{
+    ViewBag.Title = "ViewUserGroups";
+}
+<br />
+<p></p>
+
+@foreach (GroupIndexViewModel.UserGroupViewModel groupView in Model)
+{
+    <div class="group-members">
+    <p>@Html.ActionLink(groupView.Name, "Details", "Group", new { id = groupView.GroupId }, null)</p>
+    <p class="text-right">@groupView.LeaderUserName</p>
+    <p class="text-right">@groupView.LeaderEmail</p>
+    <br />
+    <button class="green-btn" onclick="location.href='@Url.Action("LeaveGroup", "Group", new { @id = groupView.GroupId })'">Leave Group</button>
+    </div>
+}

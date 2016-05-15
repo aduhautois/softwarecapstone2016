@@ -1,0 +1,20 @@
+﻿@* Created By: Trent Cullinan 04/14/16 *@
+@model com.GreenThumb.MVC.Models.CreateNeedViewModel
+@using (Html.BeginForm("CreateNeed", "Garden", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.HiddenFor(m => m.GardenId)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description)
+    </div>
+    <div>
+        <input type="submit" value="Create Need" class="btn btn-default" />
+    </div>
+}

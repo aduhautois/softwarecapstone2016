@@ -1,0 +1,43 @@
+﻿@*Created by Ryan Taylor*@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@model com.GreenThumb.MVC.Models.MessageViewModelCompose
+@{Layout = "";}
+
+<div>
+    @using (Html.BeginForm("Compose", "Message", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row create-group compose">
+            @Html.LabelFor(m => m.Receiver)
+            <select class="form-control" id="Receiver" name="Receiver">
+                @foreach (var user in Model.UserList)
+                {
+                    <option value="@user.Username">@user.FirstName @user.LastName</option>
+                }
+            </select>
+            <br />
+            <br />
+
+            @Html.ValidationMessageFor(m => m.Receiver, "", new { @class = "text-danger" })
+        </div>
+        <div class="row create-group compose">
+            @Html.LabelFor(m => m.Subject)
+            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+            <br />
+            <br />
+        </div>
+        <div class="row create-group compose">
+            @Html.LabelFor(m => m.Content)
+            @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+            <br />
+        </div>
+        <div>
+            <input type="submit" value="Send Message" class="green-btn text-center" />
+        </div>
+    }
+</div>

@@ -1,0 +1,99 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.HomePages.ViewBlog"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+	Title="ViewBlog">
+    <Page.Resources>
+        <Style x:Key="blogNames" TargetType="StackPanel">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="#FFF4F4F4"></Setter>
+            <Style.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Cursor" Value="Hand"></Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter Property="Background" Value="#FFB9EE79" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="40">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.25,1" StartPoint="0.25,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFD1F7BB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Height="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="lblPage" Content="Page 1" Margin="20 5 20 5" Grid.Row="0" Grid.Column="0" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="0" MinWidth="110" MaxWidth="110" x:Name="btnFirst" Margin="20 5 20 5" Content="First" Click="btnFirst_Click" HorizontalAlignment="Left" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="1" MinWidth="110" MaxWidth="110" x:Name="btnPrevious" Margin="20 5 20 5" Content="Previous" Click="btnPrevious_Click" HorizontalAlignment="Left" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="2" MinWidth="110" MaxWidth="110" x:Name="btnNext" Margin="20 5 20 5" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="3" MinWidth="110" MaxWidth="110" x:Name="btnLast" Margin="20 5 20 5" Content="Last" Click="btnLast_Click" HorizontalAlignment="Left" />
+                </Grid>
+
+                <ItemsControl Grid.Row="1" Grid.Column="0" x:Name="icBlogs">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock x:Name="lblBlogTitle" Grid.Row="0" Margin="0,20,0,40" Text="{Binding BlogTitle}" TextWrapping="Wrap" FontSize="50" Foreground="#FF19320B" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="lblBlogData" Grid.Row="1" Text="{Binding BlogData}" TextWrapping="Wrap" FontSize="20"/>
+                                <TextBlock x:Name="lblDateCreated" Grid.Row="2" Margin="20,10,20,0" Text="{Binding DateCreated}" FontSize="15" Foreground="#FF19320B" />
+                                <TextBlock x:Name="lblCreatedBy" Grid.Row="3" Margin="20,0,20,20" Text="{Binding CreatedBy}" FontSize="15" Foreground="#FF19320B" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Grid>
+        <Border Grid.Column="1" BorderBrush="black" BorderThickness="1">
+            <Grid>
+                <StackPanel Background="Transparent">
+                    <Button Style="{StaticResource button1}" x:Name="btnCreateBlog" Margin="0 20 0 0" Content="Create an Article" FontSize="20" Click="btnCreateBlog_Click"></Button>
+                    <Button Style="{StaticResource button1}" x:Name="allBlogs" Margin="0 20" Content="View All Blogs" FontSize="20" Click="allBlogs_Click"/>
+                    <Line Height="20"></Line>
+                    <StackPanel Style="{StaticResource blogNames}" x:Name="stpnlBlogs" Initialized="stpnlBlogs_Initialized">
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

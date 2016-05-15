@@ -1,0 +1,28 @@
+﻿@*Poonam Dubey*@
+@*14th April 2016*@
+@*Partial view for create task*@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+<div class="col-sm-12 col-md-6 col-lg-6">
+    @Html.Label("Enter the task's description:")
+    <br/>
+    @Html.TextArea("GardenDescription", new
+    {
+        @id = "desc",
+        @class = "textarea user-input",
+        required = "required",
+        maxlength = 100
+    })
+</div>
+<div class="col-sm-12 col-md-6 col-lg-6">
+    @Html.Label("Enter any important notes here:")
+    <br/>
+    @Html.TextArea("UserNotes", new
+    {
+        @id = "notes",
+        @class = "textarea user-input",
+        required = "required",
+        maxlength = 250
+    })
+</div>

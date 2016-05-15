@@ -1,0 +1,27 @@
+﻿@* Created by: Trent Cullinan 04/05/2016 
+   Edited by: Ash Duhautois 05/04/2016
+        Adjusted formatting of viewmodel data*@
+
+@model com.GreenThumb.MVC.Models.GroupMemberViewModel
+
+<div>
+    <h3>Group Leader</h3>
+    <br />
+    @if (null != Model)
+    {        
+        <div class="group-leader">
+            <div class="col-lg-6">
+                <ul class="text-left list-unstyled">
+                    <li>USERNAME:&nbsp;  @Html.DisplayTextFor(m => m.UserName)</li>
+                    <li>NAME:&nbsp;  @Html.DisplayTextFor(m => m.FirstName) @Html.DisplayTextFor(m => m.LastName)</li>
+                    <li>EMAIL:&nbsp; <a href="mailto:@Html.DisplayTextFor(m => m.Email)">@Html.DisplayTextFor(m => m.Email)</a></li>
+                </ul>
+                <br />
+            </div>
+        </div>
+    }
+    else
+    {
+        <p class="alert-danger">Unable to display group leader information.</p>
+    }
+</div>

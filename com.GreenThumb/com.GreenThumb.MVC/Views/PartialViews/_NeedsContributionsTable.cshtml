@@ -1,0 +1,23 @@
+﻿@* Created By: Trent Cullinan 04/14/16 *@
+@* Modified By: Ash Duhautois 05/04/2016
+    Formatted styles*@
+
+@using com.GreenThumb.BusinessObjects;
+@model IEnumerable<NeedContribution>
+<div>
+    @if (0 < Model.Count())
+    {
+        foreach (NeedContribution need in Model)
+        {
+            <div class="group-members">
+                <h2>@need.Need.Title</h2>
+                <p class="text-right">Date Created: @need.DateCreated</p>
+                <p>@Html.Raw(need.Description)</p>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="h3">No contributions found.</p>
+    }
+</div>

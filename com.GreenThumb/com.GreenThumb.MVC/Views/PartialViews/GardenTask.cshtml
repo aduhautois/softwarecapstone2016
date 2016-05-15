@@ -1,0 +1,28 @@
+﻿@*Poonam Dubey*@
+@*14th April 2016*@
+@*Partial view to view garden tasks*@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@model IEnumerable<com.GreenThumb.BusinessObjects.Task>
+
+@foreach (com.GreenThumb.BusinessObjects.Task jobs in Model){
+    <div class="group-members">
+        <h2>@jobs.TaskDescription</h2>
+        <p class="text-right">Assigned To: @jobs.AssignedTo</p>
+        <p class="text-right">Assigned By: @jobs.AssignedBy</p>
+        <p class="text-right">Assigned On: @jobs.AssignedOn</p>
+        <p class="text-right">Completed On: @jobs.CompletedOn</p>
+        <p class="text-left">Notes: @jobs.UserNotes</p>
+        <br />
+        @if (String.IsNullOrEmpty(@jobs.AssignedTo))
+        {
+            <button class="green-btn" onclick="location.href='@Url.Action("VolunteerTask", "GardenTask", new { taskID = @jobs.TaskID, gardenID = -1, @class = "volunteerTask" })'">Volunteer</button>
+            <br />
+        }
+        <button class="green-btn" onclick="location.href='@Url.Action("DeactivateTask", "GardenTask", new { taskID = @jobs.TaskID, gardenID = -1, @class = "deleteTask" })'">Deactivate</button>
+    </div>
+}
+
+</table>
+<script src="~/Scripts/GardenTask.js"></script>

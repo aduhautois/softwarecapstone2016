@@ -1,0 +1,50 @@
+﻿@*
+    <summary>
+     Author: Chris Schwebach
+     Date:  4/29/2016
+     </summary>
+     <returns></returns>
+*@
+
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@using com.GreenThumb.MVC.Models
+@model IEnumerable<ArticlesViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Expert</h1>
+
+@using (Html.BeginForm())
+{
+    <div class="dark-div round">
+        <img class="logo" src="http://www.pixeledpaper.com/shared/img/expert.png"/>
+        <br />
+        <p>
+            Experts post articles about gardening techniques, plants, recipes, and nutrients. They are also encouraged to answer
+            questions that garden members may have.
+        </p>
+        <br />
+        <p>If you would like to request to be an Expert please click below!</p>
+        <br />
+        @if (ViewBag.IsExpert)
+        {
+            @Html.ActionLink("Post an Article", "Articles", "Expert", new { @class = "green-btn text-center", style = "width: 14em;" })
+        }
+        else
+        {
+            @Html.ActionLink("Request to be an Expert", "RequestJoinExpert", "Expert", new { @class = "green-btn text-center", style = "width: 14em;" })
+        }
+        <br />
+        <div>
+           
+        </div>
+    </div>
+
+    <div class="tableArticles">
+        @Html.Partial("~/Views/PartialViews/_ArticlesTable.cshtml", Model)
+    </div>
+}

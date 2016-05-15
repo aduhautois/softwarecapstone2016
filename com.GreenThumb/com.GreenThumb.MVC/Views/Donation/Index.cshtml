@@ -1,0 +1,53 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@using com.GreenThumb.BusinessObjects;
+@model IEnumerable<GroupNeedSummary>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Help us out!</h1>
+<div class="dark-div round">
+
+    <h3 class="inline-block">Donate to our PayPal</h3>
+    <img class="small-image inline-block" src="http://www.pixeledpaper.com/shared/img/hand.png" />
+    <br />
+    <br />
+    <p>Donate to our PayPal for an easy way to contribute to our community gardens!</p>
+    <br />
+    <form class="donate-form double-indent" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+    <br />
+    <br />
+    <button class="green-btn" onclick="location.href='@Url.Action("ViewContributions","Donation")'">View Your Contributions</button>
+    @if (0 < Model.Count())
+    {
+        foreach (GroupNeedSummary summary in Model)
+        {
+            <div class="group-members">
+                <h2>@Html.ActionLink(summary.GroupName, "ViewGroupNeeds", "Donation", new { id = summary.GroupID }, null)</h2>
+                <p class="text-right">Leader: @summary.GroupLeader.UserName</p>
+                <div class="indent">
+                    <h2>Active Needs</h2>
+                    <p>@summary.ActiveNeeds</p>
+                    <h2>Completed Needs</h2>
+                    <p>@summary.CompletedNeeds</p>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div>
+            <p>No needs found!</p>
+        </div>
+    }
+</div>

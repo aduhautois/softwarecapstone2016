@@ -1,0 +1,482 @@
+﻿/*
+
+    Created by: Ashlyn Duhautois
+    DO NOT EDIT
+
+
+
+
+    STUFF TO DO:
+    - FOUC
+
+*/
+
+/*VARIABLES*/
+
+$darkgrey: #222222;
+$lightgrey: #ababa9;
+$red: #c8181c;
+$green: #e4e208;
+$blue: #0072bc;
+$superlightgrey: #cccccc;
+
+/*FONTS*/
+
+@font-face {
+    font-family: firasansregular;
+    src:url(../fonts/FiraSans-Regular.otf);
+}
+@font-face {
+    font-family: firasansultralight;
+    src:url(../fonts/FiraSans-UltraLight.otf);
+}
+@font-face {
+    font-family: firasanslight;
+    src:url(../fonts/FiraSans-Light.otf);
+}
+@font-face {
+    font-family: firasansbook;
+    src:url(../fonts/FiraSans-Book.otf);
+}
+@font-face {
+    font-family: firasansmedium;
+    src:url(../fonts/FiraSans-Medium.otf);
+}
+@font-face {
+    font-family: helveticalight;
+    src:url(../fonts/Helvetica%20Light.ttf);
+}
+@font-face {
+    font-family: helvetica;
+    src:url(../fonts/Helvetica.otf);
+}
+@font-face {
+    font-family: helveticaneuethin;
+    src:url(../fonts/HelveticaNeue-Thin.otf);
+}
+
+/*MIXINS*/
+
+@mixin transition() {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.parent-element {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/*STYLES*/
+
+body {
+    background-image: url(http://www.pixeledpaper.com/shared/img/green_leaves_bokeh.jpg);
+    background-size: cover;
+    font-size: 16px;
+    font-family: firasanslight;
+    background-attachment: fixed;
+    color: $darkgrey;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+    @include transition;
+}
+
+a:hover {
+    color: $green;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.home-intro-div .dark-div {
+    background-color: $darkgrey;
+    float: none;
+    padding: 2em;
+}
+
+.dark-div {
+    background-color: $darkgrey;
+    color: white;
+}
+
+.green-btn {
+    border: none;
+    background-color: $green;
+    color: $darkgrey;
+    padding: 1em;
+    text-transform: uppercase;
+    @include transition;
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.green-btn:hover {
+    background-color: white;
+    color: black;
+    @include transition;
+    text-decoration: none;
+}
+
+.green-btn-left {
+    border: none;
+    background-color: $green;
+    color: $darkgrey;
+    padding: 1em;
+    text-transform: uppercase;
+    @include transition;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.green-btn-left:hover {
+    @extend .green-btn:hover;
+}
+.white-btn {
+    border: 1px solid black;
+    background-color: white;
+    color: $darkgrey;
+    padding: 1em;
+    text-transform: uppercase;
+    @include transition;
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.white-btn:hover {
+    background-color: $green;
+    color: black;
+    @include transition;
+    text-decoration: none;
+}
+
+.round {
+    border-radius: 50px;
+}
+
+.home-intro h1 {
+    font-family: firasanslight;
+}
+
+h2 {
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+h3 {
+    font-family: firasansmedium;
+}
+
+.top-pad-lite {
+    padding-top: 1em;
+}
+    
+.create-group {
+    margin-left: 1em;
+}
+
+.create-group input[type="text"] {
+    padding: .5em;
+    width: 100%;    
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    color: $darkgrey;
+}
+    
+.group-index-image {
+    background-image: url("http://www.pixeledpaper.com/shared/img/garden.jpg");
+    background-size: cover;
+    height: 30vh;
+}
+
+.garden-index-create .green-btn {
+    width: 200px;
+    text-align: center;
+    display: block;
+    margin: auto;
+
+    a {
+        color: $darkgrey;
+        text-decoration: none;
+    }
+  
+}
+
+.user-input {
+    color: black;
+}
+
+input {
+    color: black;
+}
+
+.blog-post {
+    border-bottom: 1px solid white;
+}
+
+.blog-post:last-child {
+    border-bottom: none;
+}
+
+.green-btn a {
+    color: black;
+    text-decoration: none;
+    font-size: .8em;
+}
+
+.fourteen-em {
+    width: 14em;
+}
+
+.group-leader {
+    font-size: 1.2em;
+}
+
+.group-left {
+    float: left;
+    display: inline;
+    padding-bottom: 2em;
+}
+
+.group-right {
+    float: left;
+    display: inline;
+    padding-left: 2em;
+    padding-bottom: 2em;
+}
+
+.indent {
+    padding-left: 2em;
+}
+
+.double-indent {
+    padding-left: 4em;
+}
+
+.group-members {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid white;
+}
+
+.group-members:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.group-members:last-of-type {
+    border-bottom: none;
+}
+.tab-content {
+    border: 1px solid white;        
+    background-color: white;
+    color: black;
+    overflow: auto;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.block {
+    display: block;
+}
+
+.messagebox h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.messagebox p {
+    padding-left: .5em;
+}
+
+.message-content {
+    padding-top: 1em;
+    padding-bottom: 2em;
+    border: 1px solid $superlightgrey;
+    margin-bottom: 2em;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.compose select {
+    width: 14em;
+    display: inline-block;
+    margin-left: .5em;
+}
+
+.compose input[type="text"] {
+    width: 19em;
+    display: inline-block;
+    border: 1px solid $superlightgrey;
+}
+
+ul li {
+    padding-left: -1em;
+    margin-left: 0;
+}
+
+ul.nav, ul.nav li {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    padding-top: 1em;
+}
+
+.small-image {
+    padding-bottom: .5em;
+}
+
+.donate-form {
+    display: block;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+}
+
+/*DESKTOP*/
+
+@media (min-width: 1024px) {
+
+    .dark-div {
+        padding: 4em;
+        margin-bottom: 2em;
+    }
+
+    h1 {
+        padding-top: 1em;
+        font-size: 500%;
+    }
+
+    h3 {
+        font-size: 250%;
+    }
+
+    p {
+        font-size: 140%;
+    }
+    
+    .home-intro-div .dark-div {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+
+    .home-intro-div img {
+        height: 120px;
+        display: block;
+        margin: auto;
+    }
+
+    .group-index-create {
+        padding-left: 4em;
+    }
+
+    .group-index-image {    
+        margin-left: 4em;
+    }
+
+    .fullwidth canvas {
+        margin: auto;
+        display: block;
+    }
+
+    .textarea {
+        width: 100%;
+        max-width: 100%;
+        height: 100px;
+    }
+
+    .blog-post {
+        padding: 4em;
+        word-wrap: break-word;
+    }
+
+    .tab-content {
+        padding: 2em;
+
+    }
+
+    .logo {
+        padding-bottom: 1em;
+    }
+
+    .small-image {
+        padding-left: 1em;
+    }
+
+}
+
+/*MOBILE*/
+
+@media screen and (max-width: 1024px) {
+    body {
+        background-position: center;
+        background-size: cover;
+        min-width: 500px;
+    }
+    .dark-div {
+        margin: 2em;
+        padding: 3em;
+    }
+
+    h1 {
+        font-size: 200%;
+    }
+
+    .home-intro-div img {
+        height: 200px;
+        display: block;
+        margin: auto;
+    }
+
+    .textarea {
+        width: 100%;
+        max-width: 100%;
+        height: 100px;
+    }
+
+    .blog-post {
+        padding: 1em;
+    }
+
+    .tab-content {
+        padding: 1em;
+    }
+
+    .compose textarea {
+        max-width: 19em;
+    }
+
+    .small-image {
+        display: block;
+        margin: auto;
+        padding-top: 1em;
+    }
+}

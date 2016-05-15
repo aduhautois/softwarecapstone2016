@@ -1,0 +1,28 @@
+﻿@* Created By: Trent Cullinan 04/14/16 *@
+@* Modified By: Ash Duhautois 05/04/16
+    Formatted styles*@
+
+@using com.GreenThumb.BusinessObjects;
+@model IEnumerable<GardenNeed>
+
+<div>
+    @if (0 < Model.Count())
+    {
+        foreach (GardenNeed gardenNeed in Model)
+        {
+            <div class="group-members">
+                <h2>@gardenNeed.Title</h2>
+                <p class="text-right">@gardenNeed.DateCreated.ToShortDateString()</p>
+                <p class="text-right">Created By: @gardenNeed.CreatedBy.UserName</p>
+                <p>@Html.Raw(gardenNeed.Description)</p>
+            
+                <button class="green-btn" onclick="location.href='@Url.Action("CloseNeed", "Garden", new { id = ViewBag.GardenId, needId = gardenNeed.GardenNeedId }, null)'">Remove</button>
+            </div>
+        }
+
+    }
+    else
+    {
+        <p class="h4">No needs found.</p>
+    }
+</div>

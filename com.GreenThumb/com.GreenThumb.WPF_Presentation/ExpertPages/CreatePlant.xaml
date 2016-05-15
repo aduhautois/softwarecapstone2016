@@ -1,0 +1,124 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.ExpertPages.CreatePlant"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="1100" d:DesignWidth="450"
+	Title="CreatePlant">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.25,1" StartPoint="0.25,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFD1F7BB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid>
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.25,1" StartPoint="0.25,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FFD1F7BB" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Content="Create Plant" VerticalAlignment="Bottom" Grid.Row="0" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></Label>
+                <Grid Grid.Row="1" Width="400" HorizontalAlignment="Center" Margin="0,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="120"></RowDefinition>
+                        <RowDefinition Height="240"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Label}">
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="Height" Value="45"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="Height" Value="45"/>
+                        </Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="Height" Value="45"/>
+                        </Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="Margin" Value="10"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Label Content="Name:" Grid.Row="0"/>
+                    <Label Content="Type:" Grid.Row="1"/>
+                    <Label Content="Category:" Grid.Row="2"/>
+                    <Label Content="Season:" Grid.Row="3"/>
+                    <Label Content="Description:" Grid.Row="4"/>
+                    <!--<Label Content="Plant ID" HorizontalAlignment="Left" Margin="23,17,0,0" VerticalAlignment="Top"/>-->
+
+                    <TextBox HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Margin="5" Text="" x:Name="name" KeyUp="Grid_KeyUp"/>
+                    <TextBox HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Margin="5" Text="" x:Name="type" KeyUp="Grid_KeyUp"/>
+                    <ComboBox  Style="{StaticResource comboBox1}" Grid.Row="2" Grid.Column="1" Margin="5" x:Name="category">
+                        <ComboBoxItem>Fruit</ComboBoxItem>
+                        <ComboBoxItem>Vegetable</ComboBoxItem>
+                        <ComboBoxItem>Herb</ComboBoxItem>
+                        <ComboBoxItem>Flower</ComboBoxItem>
+                    </ComboBox>
+                    <!--<TextBox HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="" Width="120" x:Name="season"/>-->
+                    <ComboBox Style="{StaticResource comboBox1}" Grid.Row="3" Grid.Column="1" Margin="5" x:Name="season">
+                        <ComboBoxItem>Spring</ComboBoxItem>
+                        <ComboBoxItem>Summer</ComboBoxItem>
+                        <ComboBoxItem>Fall</ComboBoxItem>
+                        <ComboBoxItem>Winter</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox HorizontalAlignment="Stretch" Grid.Row="4" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="" Height="90" x:Name="description" KeyUp="Grid_KeyUp"/>
+                    <Grid Margin="5,70,5,5" Grid.Row="5" Grid.Column="1">
+                        <Grid.Background>
+                            <VisualBrush Viewport="0,0,0.5,0.5">
+                                <VisualBrush.Visual>
+                                    <Image x:Name="imgPreview"></Image>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Grid.Background>
+                    </Grid>
+                    <Button Style="{StaticResource button1}" Margin="20"  HorizontalAlignment="Left" VerticalAlignment="Top"  Name="btnUpload" Grid.Row="5" Grid.Column="1" Click="btnUpLoad_Click">Add Picture</Button>
+                    <Label Name="lblRegions" Grid.Row="6" Grid.Column="0" Content="Regions:"/>
+                    <Grid Grid.Row="6" Grid.Column="2" VerticalAlignment="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <CheckBox Name="region1"  Content="1" FontSize="20" Click="region_Checked"></CheckBox>
+                                <CheckBox Name="region2"  Content="2" Margin="50, 0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                                <CheckBox Name="region3"  Content="3" Margin="100,0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                                <CheckBox Name="region4"  Content="4" Margin="150,0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                                <CheckBox Name="region5"  Content="5" Margin="200,0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                                <CheckBox Name="region6"  Content="6" Margin="250,0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="5">
+                            <CheckBox Name="region7"  Content="7" Margin="0,0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                            <CheckBox Name="region8"  Content="8" Margin="50,0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                            <CheckBox Name="region9"  Content="9" Margin="100,0,0,0"  FontSize="20" Click="region_Checked"></CheckBox>
+                            <CheckBox Name="region10" Content="10" Margin="150,0,0,0" FontSize="20" Click="region_Checked"></CheckBox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Button Style="{StaticResource button1}" Content="Cancel" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Name="cancel" Click="cancel_Click"/>
+                    <Button Style="{StaticResource button1}" Content="Save" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="100,0,0,0" Name="save" Click="save_Click" IsEnabled="False"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

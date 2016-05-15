@@ -1,0 +1,43 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.GardenPages.AdminMessages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:com.GreenThumb.WPF_Presentation.GardenPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1000"
+      Title="AdminMessages">
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFD1F7BB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid Grid.Row="1">
+            <Button x:Name="btnSendMessage" Grid.Column="1" Click="btnSendMessage_Click" Visibility="Hidden">Send a New Message</Button>
+        </Grid>
+        <Grid x:Name="Messages" Margin="20,20" Grid.Row="2" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="lvEmails" Grid.Column="0" FontSize="16" SelectionChanged="lvEmails_SelectionChanged" Foreground="Black" Loaded="lvEmails_Loaded" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Username" Width="100" DisplayMemberBinding="{Binding MessageID}" />
+                        <GridViewColumn Header="Subject" Width="150" DisplayMemberBinding="{Binding MessageSubject}" />
+                        <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding MessageDate}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Label x:Name="lblEmailContent" Grid.Column="3" Content="" Background="White" FontSize="16" />
+        </Grid>
+    </Grid>-->
+</Page>

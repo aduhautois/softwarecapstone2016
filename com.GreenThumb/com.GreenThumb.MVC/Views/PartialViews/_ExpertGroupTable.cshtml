@@ -1,0 +1,56 @@
+﻿@*
+    <summary>
+     Table of users requesting to join experts for admin approval.
+     Author: Chris Schwebach
+     Date:  4/22/2016
+     </summary>
+     <returns>Expert Group List</returns>
+*@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@using com.GreenThumb.MVC.Models;
+@model List<GroupMemberRequestModel>
+
+
+<div>
+    @if (null != Model)
+    {
+        <h2>Expert Requests</h2>
+        if (0 < Model.Count())
+        {
+            @*<tbody>
+                @foreach (GroupMemberRequestModel requestInfo in Model)
+                {
+                    <tr>
+                        <td>@requestInfo.Requestor.UserName</td>
+                        <td>@requestInfo.Requestor.FirstName</td>
+                        <td>@requestInfo.Requestor.LastName</td>
+                        <td>@requestInfo.Request.RequestDate</td>
+                        <td>@Html.ActionLink("Approve", "ApproveRequestToJoin", "Admin", requestInfo.Request, null)</td>
+                    </tr>
+                }
+            </tbody>*@
+        
+            foreach (GroupMemberRequestModel requestInfo in Model)
+            {
+                <h2>@requestInfo.Requestor.UserName</h2>
+                <p class="text-right">Date: @requestInfo.Request.RequestDate</p>
+                <p>@requestInfo.Requestor.FirstName</p>
+                <p>@requestInfo.Requestor.LastName</p>
+                <button class="green-btn" onclick="location.href='@Url.Action("ApproveRequestToJoin", "Admin", requestInfo.Request, null)'">Approve</button>
+            }
+        }
+        else
+        {
+            <p>There are no Expert Requests at this time!</p>
+        }
+
+    }
+    else
+    {
+        <p>Unable to retrieve requests.</p>
+    }
+</div>
+
+

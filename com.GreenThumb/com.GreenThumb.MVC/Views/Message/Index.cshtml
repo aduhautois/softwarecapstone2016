@@ -1,0 +1,32 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+<h1>Messages</h1>
+
+<div class="dark-div round">
+    <h3 class="inline-block">Your Inbox</h3>
+    <img class="inline-block small-image" src="http://www.pixeledpaper.com/shared/img/inbox.png" />
+    <br />
+    <br />
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#inbox">Inbox</a></li>
+        <li><a data-toggle="tab" href="#outbox">Outbox</a></li>
+        <li><a data-toggle="tab" href="#create">Create Message</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="inbox" class="tab-pane fade in active">
+            <h3>Inbox</h3>
+            @Html.Action("Inbox")
+        </div>
+        <div id="outbox" class="tab-pane fade">
+            <h3>Outbox</h3>
+            @Html.Action("Outbox")
+        </div>
+        <div id="create" class="tab-pane fade">
+            <h3>Create Message</h3>
+            @Html.Action("Compose")
+        </div>
+    </div>
+</div>

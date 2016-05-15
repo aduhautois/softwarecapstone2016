@@ -1,0 +1,51 @@
+﻿@*
+    <summary>
+     Lets expert create a article(blog) .
+     Author: Chris Schwebach
+     Date:  4/28/2016
+     </summary>
+     <returns></returns>
+*@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@model com.GreenThumb.BusinessObjects.Blog
+
+<script src="~/Scripts/jquery-2.2.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@using (Html.BeginForm("Articles", "Expert", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="createArticleForm">
+        <h1>Create an Article</h1>
+        <div class="dark-div round">
+            <label for="BlogTitle">Article Title: </label>
+            <br />
+            @Html.EditorFor(model => model.BlogTitle, new { @class = "user-input form-control", style = "color: black;" })
+            @Html.ValidationMessageFor(model => model.BlogTitle, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            <label for="BlogData">Article Content: </label>
+            <br />
+            @Html.TextArea("BlogData", new
+            {
+                @id = "BlogData",
+                @class = "textarea form-control",
+                required = "required",
+                maxlength = 8000,
+                style = "width: 1500px; height: 400px; color: black;"
+            })
+            @Html.ValidationMessageFor(model => model.BlogData, "", new { @class = "text-danger" })
+            <br />
+            <br />
+            <input type="submit" name="submitArticle" value="Submit" class="green-btn" />
+        </div>
+    </div>
+    
+    
+}
+

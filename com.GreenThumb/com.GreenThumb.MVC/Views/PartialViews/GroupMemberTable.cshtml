@@ -1,0 +1,33 @@
+﻿@* Created by: Trent Cullinan 04/05/2016 *@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@using com.GreenThumb.MVC.Models;
+@model IEnumerable<GroupMemberViewModel>
+
+<div>
+    @if (null != Model)
+    {
+        <h3>Group Members</h3>
+        if (0 < Model.Count())
+        {
+            foreach (GroupMemberViewModel groupMember in Model)
+            {
+                <div class="group-members">
+                <h2>@groupMember.UserName - @groupMember.FirstName @groupMember.LastName</h2>
+                <p class="text-right">Joined: @groupMember.DateCreated</p>
+                <p class="text-right"><a href="mailto:@groupMember.Email">@groupMember.Email</a></p>
+                </div>
+            }
+        }
+        else
+        {
+            <h3>@Html.DisplayText("No group members retrieved.")</h3>
+        }
+
+    }
+    else
+    {
+        <p>@Html.DisplayText("Unable to retrieve group members.")</p>
+    }
+</div>

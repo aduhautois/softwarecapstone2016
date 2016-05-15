@@ -1,0 +1,22 @@
+﻿@*Created by Kristine Johnson
+  Modified by Nicholas King 04/03/2016
+       Converted to Partial view    
+  Modified by Ashlyn Duhautois 04/15/2016
+    +Styles, edited <h2> tags
+*@
+<h2>Create a new group!</h2>
+
+@using (Html.BeginForm("Create", "Group", FormMethod.Post))
+{
+    <div class="row create-group">
+        <label for="GroupName">Group Name: </label>
+        <input type="text" id="GroupName" name="GroupName" />
+    </div>
+    <br />
+    <br />
+    <input type="submit" class="green-btn text-center" name="createGroup" value="Submit" />
+    <br />
+
+}
+
+<p>Add members to your garden and become a group!</p>

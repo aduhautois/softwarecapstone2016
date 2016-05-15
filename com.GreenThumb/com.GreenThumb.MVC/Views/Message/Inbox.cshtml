@@ -1,0 +1,80 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@model IEnumerable<com.GreenThumb.MVC.Models.MessageViewModelInbox>
+@{Layout = "";}
+
+@using (Html.BeginForm("Inbox", "Message", FormMethod.Post))
+{
+    if (Model != null)
+    {
+
+        <div class="messagebox">
+            @*<div class="messagebox-header">
+                <span class="user">From</span>
+                <span class="message-subject">Subject</span>
+                <span class="message-date">Date</span>
+                <span class="message-delete">Delete?</span>
+            </div>*@
+
+            <div class="messages">
+
+
+                @foreach (var message in Model)
+                {
+                    if (message.Unread)
+                    {
+                        <div class="message-unread">
+                            <div class="col-lg-2">
+                                @Html.CheckBoxFor(m => message.Delete)
+                                <p class="inline-block">@message.Date.ToString()</p>
+                            </div>
+                            <div class="col-lg-10">
+                                @Html.HiddenFor(m => message.MessageID)
+                                <h2 class="inline-block">From: </h2>
+                                <p class="inline-block">@message.Sender</p>
+                                <br />
+                                <h2 class="inline-block">SUBJECT:</h2>
+                                <p class="inline-block">@message.Subject</p>
+                                <div class="message-content indent">
+                                    @message.Content
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+                    else
+                    {
+                        <div class="message-read">
+                            <div class="col-lg-2">
+                                @Html.CheckBoxFor(m => message.Delete)
+                                <p class="inline-block">@message.Date.ToString()</p>
+                            </div>
+                            <div class="col-lg-10">
+                                @Html.HiddenFor(m => message.MessageID)
+                                <h2 class="inline-block">From: </h2>
+                                <p class="inline-block">@message.Sender</p>
+                                <br />
+                                <h2 class="inline-block">SUBJECT:</h2>
+                                <p class="inline-block">@message.Subject</p>
+                                <div class="message-content indent">
+                                    @message.Content
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    }
+                }
+
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Delete Selected" class="green-btn" />
+            <br />
+        </div>
+    }
+    else
+    {
+        <p>Your inbox is empty!</p>
+    }
+}

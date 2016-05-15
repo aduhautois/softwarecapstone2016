@@ -1,0 +1,180 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@model com.GreenThumb.MVC.Models.GardenCreationViewModel
+
+@{
+    ViewBag.Title = "Create Garden";
+}
+
+<h1>Create a Garden</h1>
+
+
+@using (Html.BeginForm("CreateGarden", "Garden", FormMethod.Post))
+{
+    
+    <div class="dark-div round col-lg-12">
+        <h3>Garden Name</h3>
+        <br />
+        @Html.LabelFor(m => m.GardenName)
+        <br />
+        @Html.TextBoxFor(m => m.GardenName, new { @class = "user-input form-control" })
+        <br/>
+        <br/>
+        <h3>Garden Description</h3>
+        <p>Click 'garden description' or 'garden image' to edit the garden description or image:</p>
+        @Html.LabelFor(m => m.GardenDescription, new { id = "gardenDescription", @class = "green-btn", style = "color: black;" })
+        <div id="textEditor">
+            @Html.TextAreaFor(m => m.GardenDescription, new { id = "rich-editor" })
+        </div>
+    </div>
+
+    <div class="dark-div round col-lg-12">
+        <div id="image-editor">
+            @Html.Partial("~/Views/PartialViews/_DesignGarden.cshtml")
+        </div>
+    </div>
+    
+    <div class="dark-div round col-lg-12">
+        <h3>Select a Region</h3>
+        <br/>
+        <p>Select a region from the map below!</p>
+        <br />
+        <p class="text-center">Region: @Html.TextBoxFor(m => m.RegionID, new { value = "", @class = "user-input" })</p>
+        <br />
+        <br />
+
+        <div class="fullwidth">
+            <canvas id='mapCanvas'></canvas>
+        </div>
+        <script type="text/javascript">
+            function zone(name, minF, maxF, r, g, b) {
+                this.name = name;
+                this.minF = minF;
+                this.maxF = maxF;
+                this.r = r;
+                this.g = g;
+                this.b = b;
+            }
+
+            function nearestZone(p) {
+                var min = Number.MAX_VALUE;
+                var nearest = "unknown";
+
+                for (var i in zones) {
+                    var dr = p[0] - zones[i].r;
+                    var dg = p[1] - zones[i].g;
+                    var db = p[2] - zones[i].b;
+                    var dist = (dr * dr) + (dg * dg) + (db * db);
+                    if (dist < min) {
+                        min = dist;
+                        nearest = zones[i].name;
+                    }
+                }
+
+                return nearest;
+            }
+
+            var zones = [
+                new zone("0", 0, 0, 0, 0, 0),
+                new zone("0", 0, 0, 255, 255, 255),
+                new zone("2", -50, -40, 190, 163, 191),
+                new zone("3", -40, -30, 63, 37, 64),
+                new zone("4", -30, -20, 116, 117, 251),
+                new zone("5", -20, -10, 23, 142, 69),
+                new zone("6", -10, 0, 79, 204, 66),
+                new zone("7", 0, 10, 248, 251, 97),
+                new zone("8", 10, 20, 251, 149, 82),
+                new zone("9", 20, 30, 237, 109, 52),
+                new zone("10", 30, 40, 251, 176, 176)
+            ]
+
+            $(document).ready(function () {
+                var canvas = document.getElementById('mapCanvas');
+                var ctx = canvas.getContext('2d');
+                var img = new Image();
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    var scale = 0.3;
+                    canvas.height *= scale;
+                    canvas.width *= scale;
+                    ctx.drawImage(img, 0, 0, img.width * scale, img.height * scale);
+
+                    $('#mapCanvas').click(function (e) {
+                        var x = e.offsetX;
+                        var y = e.offsetY;
+                        var pixel = ctx.getImageData(x, y, 1, 1).data;
+                        console.log(nearestZone(pixel));
+                        $("#RegionID").val(nearestZone(pixel));
+                    });
+                }
+                img.src = '/images/2015_zones.jpg';
+            });
+
+            function draw(img, scale, translate) {
+                var zWidth = img.width * scale;
+                var zHeight = img.height * scale;
+                ctx.drawImage(img, 0, 0, zWidth, zHeight);
+            }
+
+        </script>
+    <br />
+    @Html.HiddenFor(m => m.GroupID)
+    <br />
+    <input type="submit" value="Submit" class="green-btn"/>
+</div>
+
+
+
+
+    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            tinymce.init({
+                selector: '#rich-editor',
+                height: 150,
+                theme: 'modern',
+                plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+                ],
+                toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                toolbar2: 'print preview media | forecolor backcolor emoticons',
+                image_advtab: true,
+                templates: [
+                    {
+                        title: 'Test template 1',
+                        content: 'Test 1'
+                    },
+                    {
+                        title: 'Test template 2',
+                        content: 'Test 2'
+                    }
+                ]
+            });
+            $('#textEditor').hide();
+            $('#gardenDescription').click(function (e) {
+               if ($('#textEditor').is(':visible')) {
+                    $('#textEditor').slideUp();
+                } else {
+                    $('#textEditor').slideDown();
+                }
+            });
+        });
+
+    </script>
+    <style type="text/css">
+        #gardenDescription:hover {
+            color: white;
+            cursor:pointer;
+            
+        }
+    </style>
+
+
+}

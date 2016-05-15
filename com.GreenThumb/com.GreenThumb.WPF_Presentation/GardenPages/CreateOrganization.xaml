@@ -1,0 +1,30 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.GardenPages.CreateOrganization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        Title="Create a new Organization" Height="418" Width="603">
+    <Grid Margin="40" Height="270" VerticalAlignment="Top">
+
+        <TextBox x:Name="txtOrganizationName" HorizontalAlignment="Left" Height="24" Margin="200,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox x:Name="txtLocalPhone" HorizontalAlignment="Left" Height="23" Margin="200,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121"/>
+
+        <Button Style="{StaticResource button1}" x:Name="btnAddOrganization" Content=" Add Organization " HorizontalAlignment="Left" Margin="34,205,0,0" VerticalAlignment="Top" Click="btnAddOrganization_Click" />
+        <Label Content="Create Organization" HorizontalAlignment="Left" Height="43" Margin="34,27,0,0" VerticalAlignment="Top" Width="348"  FontWeight="Bold" FontSize="22" Foreground="Black"/>
+
+        <Label Content="Local Phone: " x:Name="lblLocalPhone" HorizontalAlignment="Left" Margin="34,154,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black"/>
+        <Label Content="Organization Name: " x:Name="lblOrganizationName" HorizontalAlignment="Left" Margin="34,103,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black"/>
+
+    </Grid>
+
+</Page>
+

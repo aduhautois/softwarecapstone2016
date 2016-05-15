@@ -1,0 +1,23 @@
+﻿@* Created By: Trent Cullinan 04/14/16 *@
+@* Modified By: Ash Duhautois 05/04/2016
+    Formatted Styles*@
+
+@using com.GreenThumb.BusinessObjects;
+@model IEnumerable<GardenNeed>
+
+<div>
+    @if (0 < Model.Count())
+    {
+        foreach (GardenNeed need in Model)
+        {
+            <h2>@need.Title</h2>
+            <p class="text-right">Date Created: @need.DateCreated</p>
+            <p>@Html.Raw(need.Description)</p>
+            <h2>@Html.ActionLink("Contribute", "SendContribution", "Donation", new { id = need.GardenNeedId }, null)</h2>
+        }
+    }
+    else
+    {
+        <p class="h4">No needs found.</p>
+    }
+</div>

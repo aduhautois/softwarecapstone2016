@@ -1,0 +1,37 @@
+﻿@* Created by: Trent Cullinan 04/05/2016 *@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@using com.GreenThumb.MVC.Models
+@using com.GreenThumb.BusinessObjects
+@model com.GreenThumb.MVC.Models.ExpertGroupDetailViewModel
+
+@{
+    ViewBag.Title = "Expert Details";
+}
+
+<div>
+    <h1>@Model.GroupDetail.GroupName</h1>
+
+    <div class="dark-div round">
+        <div>
+            @Html.Partial("~/Views/PartialViews/GroupLeaderDetail.cshtml", Model.GroupDetail.GroupLeader)
+        </div>
+
+        <button class="green-btn fourteen-em" onclick="location.href='@Url.Action("CreateAnnouncement", "Group", new { @id = Model.GroupDetail.GroupID })'">Create Announcement</button>
+        <br />
+        <button class="green-btn fourteen-em" onclick="location.href='@Url.Action("LeaveGroup", "Group", new { @id = Model.GroupDetail.GroupID })'">Leave Group</button>
+    </div>
+
+    <div class="dark-div round">
+        @Html.Partial("~/Views/PartialViews/GroupMemberTable.cshtml", Model.GroupDetail.GroupMembers)
+    </div>
+
+    @*Add groupleader check here*@
+    @if (ViewBag.GroupLeader)
+    {
+        <div class="dark-div round">
+            @Html.Partial("~/Views/PartialViews/_GroupRequestTable.cshtml", Model.GroupDetail.Requests)
+        </div>
+    }
+</div>

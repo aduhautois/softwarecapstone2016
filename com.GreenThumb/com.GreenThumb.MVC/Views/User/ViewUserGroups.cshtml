@@ -1,0 +1,53 @@
+﻿@* Created by: Trent Cullinan 03/31/16 *@
+@using com.GreenThumb.MVC.Models;
+@model IEnumerable<UserGroupViewModel>
+
+@{
+    ViewBag.Title = "ViewUserGroups";
+}
+
+<h2>ViewUserGroups</h2>
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.SingleOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.SingleOrDefault().LeaderUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.SingleOrDefault().LeaderEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.SingleOrDefault().CreatedDate)
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (UserGroupViewModel groupView in Model)
+        {
+            <tr>
+                <td>
+                    @groupView.Name
+                </td>
+                <td>
+                    @groupView.LeaderUserName
+                </td>
+                <td>
+                    @groupView.LeaderEmail
+                </td>
+                <td>
+                    @groupView.CreatedDate
+                </td>
+                <td>
+                    @Html.ActionLink("Leave Group", "LeaveGroup", "User", new { group = groupView.GroupId }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@* Created by: Trent Cullinan 04/05/2016 
+   Edited by: Ash Duhautois 05/04/2016
+        Removed table formatting from viewmodel data*@
+@using com.GreenThumb.MVC.Models
+@model IEnumerable<GroupGardenViewModel>
+
+<div>
+    @if (null != Model)
+    {
+        <h3>Group Gardens</h3>
+        if (0 < Model.Count())
+        {
+            foreach (GroupGardenViewModel garden in Model)
+            {
+                <h2 class="indent">@Html.ActionLink(garden.GardenName, "GardenDetail", "Garden", new { id = garden.GardenID }, new { @class = "" })</h2>
+                @* Garden description is just for testing *@
+                <div class="html-content double-indent">
+                    @Html.Raw(garden.Description)
+                </div>
+                @* Check roles for group leader, then add column for options *@
+                <br />
+            }
+
+
+        }
+        else
+        {
+            <p>@Html.DisplayText("No gardens found.")</p>
+        }
+    }
+    else
+    {
+        <p>@Html.DisplayText("Unable to retrieve group gardens.")</p>
+    }
+</div>

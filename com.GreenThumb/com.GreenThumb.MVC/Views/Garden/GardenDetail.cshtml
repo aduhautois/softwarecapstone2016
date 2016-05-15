@@ -1,0 +1,77 @@
+﻿@* Created By: Trent Cullinan 04/14/16 *@
+@* Modified By: Ash Duhautois 05/04/16
+    Formatted styles*@
+
+@using com.GreenThumb.MVC.Models;
+@using com.GreenThumb.BusinessObjects;
+@model GardenDetailViewModel
+
+@{
+    ViewBag.Title = "GardenDetail";
+    ViewBag.GardenId = Model.GardenID;
+    const string nullRecords = "Unable to retrieve records.";
+}
+
+<h1>Garden Details</h1>
+
+<div class="dark-div round">
+    @if (ViewBag.GroupLeader)
+    {
+        <button class="green-btn" onclick="location.href='@Url.Action("AddNeed", "Garden", new { id = Model.GardenID })'">Add Need</button>
+    }
+    <br />
+    <h3>@Html.LabelFor(m => m.ActiveNeeds, new { style = "font-weight: normal;" })</h3>
+    <div>
+        @if (null != Model.ActiveNeeds)
+        {
+            @Html.Partial("~/Views/PartialViews/_GardenNeedsTable.cshtml", Model.ActiveNeeds)
+        }
+        else
+        {
+            <p class="h3">@nullRecords</p>
+        }
+        <br />
+    </div>
+</div>
+<div class="dark-div round">
+    <div>
+        @* If the collection is null then do not display anything *@
+        @if (null != Model.PendingContributions)
+        {
+            <h3>@Html.LabelFor(m => m.PendingContributions, new { style = "font-weight: normal;" })</h3>
+            @Html.Partial("~/Views/PartialViews/_ViewContributionsTable.cshtml", Model.PendingContributions)
+        }
+    </div>
+</div>
+<div class="dark-div round">
+    <h3>@Html.LabelFor(m => m.CompletedNeeds, new { style = "font-weight: normal;" })</h3>
+    <div>
+        @if (null != Model.CompletedNeeds)
+        {
+            if (0 < Model.CompletedNeeds.Count())
+            {
+
+                foreach (GardenNeed gardenNeed in Model.CompletedNeeds)
+                {
+                    <div class="group-members">
+                        <h2>@gardenNeed.Title</h2>
+                        <p class="text-right">@gardenNeed.DateCreated.ToShortDateString()</p>
+                        <p class="text-right">Created By: @gardenNeed.CreatedBy.UserName</p>
+                        <p>@Html.Raw(gardenNeed.Description)</p>
+
+                    </div>
+                }   
+            }
+            else
+            {
+                <p class="h4">No needs found.</p>
+            }
+        }
+        else
+        {
+            <p class="h3">@nullRecords</p>
+        }
+
+    </div>
+</div>
+

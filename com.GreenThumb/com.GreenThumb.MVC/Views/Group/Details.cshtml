@@ -1,0 +1,44 @@
+﻿@* Created by: Trent Cullinan 04/05/2016 *@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@using com.GreenThumb.MVC.Models
+@model com.GreenThumb.MVC.Models.GroupDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h1>@Model.GroupName</h1>
+
+    <div class="dark-div round">
+        <div>
+            @Html.Partial("~/Views/PartialViews/GroupLeaderDetail.cshtml", Model.GroupLeader)
+        </div>
+
+        <button class="green-btn fourteen-em" onclick="location.href='@Url.Action("CreateAnnouncement", "Group", new { @id = Model.GroupID })'">Create Announcement</button>
+        <br />
+        <button class="green-btn fourteen-em" onclick="location.href='@Url.Action("LeaveGroup", "Group", new { @id = Model.GroupID })'">Leave Group</button>
+    </div>
+
+    <div class="dark-div round">
+        @Html.Partial("~/Views/PartialViews/GroupGardenTable.cshtml", Model.Gardens)
+        @if (ViewBag.GroupLeader)
+        {
+                @Html.ActionLink("Add Garden", "CreateGarden", "Garden", new { @id = Model.GroupID }, new { @class = "green-btn text-center", style = "width: 14em;" })
+        }
+    </div>
+
+    <div class="dark-div round">
+        @Html.Partial("~/Views/PartialViews/GroupMemberTable.cshtml", Model.GroupMembers)
+    </div>
+
+    @*Add groupleader check here*@
+    @if(ViewBag.GroupLeader)
+    {
+    <div class="dark-div round">
+        @Html.Partial("~/Views/PartialViews/_GroupRequestTable.cshtml", Model.Requests)
+    </div>
+    }
+</div>

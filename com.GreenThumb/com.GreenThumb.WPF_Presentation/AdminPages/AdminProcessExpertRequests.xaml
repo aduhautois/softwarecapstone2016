@@ -1,0 +1,94 @@
+﻿<!-- Created By: Trent Cullinan 03/15/2016 -->
+<Page x:Class="com.GreenThumb.WPF_Presentation.AdminPages.AdminProcessExpertRequests"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600"
+	Title="AdminProcessExpertRequests">
+
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tcScreens" HorizontalAlignment="Left" Grid.Row="0" MaxWidth="1000" SelectionChanged="tcScreens_SelectionChanged">
+            <TabItem x:Name="tiRequests" Header="Requests">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgExpertRequests" Grid.Column="0" AutoGenerateColumns="false" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgExpertRequests_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date Requested" Binding="{Binding Path=RequestDate}" />
+                            <DataGridTextColumn Header="UserName" Binding="{Binding Path=User.UserName}" />
+                            <DataGridTextColumn Header="First Name" Binding="{Binding Path=User.FirstName}" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding Path=User.LastName}" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Path=User.EmailAddress}" />
+                            <DataGridTextColumn Header="User Name" Binding="{Binding Path=User.UserName}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Column="1" HorizontalAlignment="Left"  Width="300" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Request Subject" FontWeight="Bold" />
+                        <Label Grid.Row="1" x:Name="lblRequestTitle" Padding="15,0,0,10" HorizontalAlignment="Left" />
+                        <Label Grid.Row="2" Content="Request Content" FontWeight="Bold"  />
+                        <TextBlock x:Name="tbRequestContent" Grid.Row="3" TextAlignment="Left" Padding="15,0,0,10" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tiAllUsers" Header="Users W/O Expert Role">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="Search Users: " />
+                        <TextBox x:Name="txtSearchUsers" Width="250" Margin="5" GotFocus="txtSearchUsers_GotFocus" LostFocus="txtSearchUsers_LostFocus" />
+                        <Button x:Name="btnSearchUsers" Content="Search" Width="75" Margin="5" Click="btnSearchUsers_Click" />
+                    </StackPanel>
+                    <DataGrid x:Name="dgAllUsers" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgAllUsers_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="UserName" Binding="{Binding Path=UserName}" />
+                            <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tiCurrentExperts" Header="Current Experts">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Label Content="Search Experts: " />
+                        <TextBox x:Name="txtSearchExperts" Width="250" Margin="5" GotFocus="txtSearchExperts_GotFocus" LostFocus="txtSearchExperts_LostFocus" />
+                        <Button x:Name="btnSearchExperts" Content="Search" Width="75" Margin="5" Click="btnSearchExperts_Click" />
+                    </StackPanel>
+                    <DataGrid x:Name="dgCurrentExperts" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectionChanged="dgCurrentExperts_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="UserName" Binding="{Binding Path=UserName}" />
+                            <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Style="{StaticResource button1}" x:Name="btnActionOne" Margin="5" Padding="5" Content="Approve Expert" Click="btnActionOne_Click" />
+            <Button Style="{StaticResource button1}" x:Name="btnActionTwo" Margin="5" Padding="5" Content="Decline Request" Click="btnActionTwo_Click" />
+            <Label x:Name="lblResponseMessage" Content="" Margin="5" />
+        </StackPanel>
+    </Grid>
+</Page>

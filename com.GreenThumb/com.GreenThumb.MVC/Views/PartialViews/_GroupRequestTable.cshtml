@@ -1,0 +1,38 @@
+﻿@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling
+    
+    approve request nonfunctional?*@
+
+@using com.GreenThumb.MVC.Models;
+@model List<GroupMemberRequestModel>
+<div>
+    @if (null != Model)
+    {
+        <h3>Group Requests</h3>
+        if (0 < Model.Count())
+        {
+            @*<td>@Html.ActionLink("Approve", "ApproveRequestJoin", "Group", requestInfo.Request, null)</td>*@
+
+            foreach (GroupMemberRequestModel requestInfo in Model)
+            {
+                <div class="group-member">
+                    <h2>@requestInfo.Requestor.UserName</h2>
+                    <p>@requestInfo.Requestor.FirstName @requestInfo.Requestor.LastName</p>
+                    <p class="text-right">Request Date: @requestInfo.Request.RequestDate</p>
+
+                    <button class="green-btn" onclick="location.href='@Url.Action("ApproveRequestToJoin","Group", requestInfo.Request, null)'">Approve</button>
+                </div>
+            }
+        }
+        else
+        {
+            <h4>No one is currently looking to join your group</h4>
+        }
+
+    }
+    else
+    {
+        <p>Unable to retrieve requests.</p>
+    }
+</div>
+

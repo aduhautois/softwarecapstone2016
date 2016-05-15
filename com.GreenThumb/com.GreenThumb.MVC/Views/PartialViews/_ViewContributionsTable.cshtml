@@ -1,0 +1,28 @@
+﻿@* Created By: Trent Cullinan 04/14/16 *@
+@* Modified By: Ash Duhautois 05/04/16
+        Formatted styles*@
+
+@using com.GreenThumb.BusinessObjects;
+@model IEnumerable<NeedContribution>
+<div>
+    @if (0 < Model.Count())
+    {
+        foreach (NeedContribution need in Model)
+        {      
+
+            <div class="group-members">
+                <h2>@need.Need.Title</h2>
+                <p class="text-right">Sent By: @need.SentBy.UserName</p>
+                <p class="text-right">Date Created: @need.DateCreated</p>
+                <p>@need.Description</p>
+
+                @Html.ActionLink("Approve", "ApproveContribution", new { id = ViewBag.GardenId, contributionId = need.NeedContributionID }, null)
+                @Html.ActionLink("Decline", "DeclineContribution", new { id = ViewBag.GardenId, contributionId = need.NeedContributionID }, null)
+            </div>
+        }
+    }
+    else
+    {
+        <p class="h3">No contributions found.</p>
+    }
+</div>

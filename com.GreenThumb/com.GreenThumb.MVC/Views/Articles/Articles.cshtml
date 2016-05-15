@@ -1,0 +1,9 @@
+﻿
+
+@using com.GreenThumb.MVC.Models
+@model IEnumerable<ArticlesViewModel>
+
+
+<div class="tableArticles">
+    @Html.Partial("~/Views/PartialViews/_ArticlesTable.cshtml", Model);
+</div>

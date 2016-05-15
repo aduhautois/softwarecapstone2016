@@ -1,0 +1,22 @@
+﻿<Window x:Class="com.GreenThumb.WPF_Presentation.CreatePlant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CreatePlant" Height="386" Width="324">
+    <Grid Margin="0,0,7,30">
+        <Label Content="Name" HorizontalAlignment="Left" Margin="23,51,0,0" VerticalAlignment="Top"/>
+        <Label Content="Type" HorizontalAlignment="Left" Margin="23,87,0,0" VerticalAlignment="Top"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="23,122,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="20,187,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="150,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="name"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="150,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="type"/>
+        <TextBox HorizontalAlignment="Left" Height="24" Margin="150,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="category"/>
+        <TextBox HorizontalAlignment="Left" Height="70" Margin="150,197,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" x:Name="description"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="200,285,0,0" VerticalAlignment="Top" Width="75" Name="save" Click="save_Click" IsEnabled="False"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="25,285,0,0" VerticalAlignment="Top" Width="75" Name="cancel" Click="cancel_Click"/>
+        <Label Content="Season" HorizontalAlignment="Left" Margin="23,156,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="150,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="season"/>
+        <Label Content="Plant ID" HorizontalAlignment="Left" Margin="23,17,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="150,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="plantId" LostFocus="plantId_LostFocus"/>
+
+    </Grid>
+</Window>

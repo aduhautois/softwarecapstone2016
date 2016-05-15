@@ -1,0 +1,261 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.ExpertPages.ViewPlants"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="600"
+	Title="ViewPlants">
+
+    <Grid Margin="40">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.25,1" StartPoint="0.25,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFD1F7BB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold" Content="Search for Plants" Foreground="#FF19320B"></Label>
+        <Grid x:Name="grdOptions" Grid.Row="1">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource button1}" x:Name="btnName" Content="Name" Margin="5" Grid.Column="1" Click="btnName_Click" Visibility="Visible"></Button>
+            <Button Style="{StaticResource button1}" x:Name="btnCategory" Content="Category" Margin="5" Grid.Column="2" Click="btnCategory_Click"></Button>
+            <Button Style="{StaticResource button1}" x:Name="btnRegion" Content="Region" Margin="5" Grid.Column="3" Click="btnRegion_Click" Visibility="Visible"></Button>
+            <Button Style="{StaticResource button1}" x:Name="btnCreatePlant" Content="Create Plant" Margin="5" Grid.Column="4" Visibility="Hidden" Click="btnCreatePlant_Click"></Button>
+        </Grid>
+        <Grid x:Name="Plants" Grid.Row="2">
+            <Grid x:Name="grdCategories" Visibility="Hidden">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Foreground" Value="#FFD1F7BB"/>
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Background" Value="#33FFFFFF"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnCategory0" Grid.Row="0" Grid.Column="0" Click="btnCategory0_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl00" Content="Fruits" Grid.Row="0"></Label>
+                        <Image x:Name="img00"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnCategory1" Grid.Row="0" Grid.Column="1" Click="btnCategory1_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl01" Content="Vegetables" Grid.Row="0"></Label>
+                        <Image x:Name="img01"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnCategory2" Grid.Row="0" Grid.Column="2" Click="btnCategory2_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl02" Content="Herbs" Grid.Row="0"></Label>
+                        <Image x:Name="img02"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnCategory3" Grid.Row="0" Grid.Column="3" Click="btnCategory3_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl03" Content="Flowers" Grid.Row="0"></Label>
+                        <Image x:Name="img03"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>
+                <!--<Button x:Name="btnCategory4" Grid.Row="1" Grid.Column="0" Click="btnCategory4_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl10" Content="Trees" Grid.Row="0"></Label>
+                        <Image x:Name="img10"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnCategory5" Grid.Row="1" Grid.Column="1" Click="btnCategory5_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl11" Content="Annuals" Grid.Row="0"></Label>
+                        <Image x:Name="img11"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnCategory6"  Grid.Row="1" Grid.Column="2" Click="btnCategory6_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl12" Content="Perennials" Grid.Row="0"></Label>
+                        <Image x:Name="img12"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnCategory7" Grid.Row="1" Grid.Column="3" Click="btnCategory7_Click">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl13" Content="Bushes" Grid.Row="0"></Label>
+                        <Image x:Name="img13"  Grid.Row="1"></Image>
+                    </Grid>
+                </Button>-->
+            </Grid>
+            <Grid x:Name="grdName" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="lblPlantName" Margin="10" Grid.Row="0" FontSize="16" Content="Start Typing the plant you would like to view..."></Label>
+                <toolkit:AutoCompleteBox x:Name="acPlants" ItemsSource="{Binding Plant}" SelectedItem="{Binding Name, Mode=TwoWay}" Margin="15" Grid.Row="1" Visibility="Hidden" />
+                <TextBox x:Name="txtNamePlantSearch" Margin="15" Grid.Row="1" MaxWidth="400" KeyUp="txtNamePlantSearch_KeyUp" Visibility="Visible" FontSize="20" />
+                <!--<Button x:Name="btnNameSearch" Content="View Selected Plant" Margin="15" Width="150" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Click="btnNameSearch_Click"></Button>-->
+
+                <Grid Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="lblPage" Content="Page 1" Margin="20 5 20 5" Grid.Row="0" Grid.Column="0" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="0" MinWidth="110" MaxWidth="110" x:Name="btnFirst" Margin="20 5 20 5" Content="First" Click="btnFirst_Click" HorizontalAlignment="Left" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="1" MinWidth="110" MaxWidth="110" x:Name="btnPrevious" Margin="20 5 20 5" Content="Previous" Click="btnPrevious_Click" HorizontalAlignment="Left" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="2" MinWidth="110" MaxWidth="110" x:Name="btnNext" Margin="20 5 20 5" Content="Next" Click="btnNext_Click" HorizontalAlignment="Left" />
+
+                    <Button Style="{StaticResource button1}" Grid.Row="1" Grid.Column="3" MinWidth="110" MaxWidth="110" x:Name="btnLast" Margin="20 5 20 5" Content="Last" Click="btnLast_Click" HorizontalAlignment="Left" />
+                </Grid>
+
+                <DataGrid x:Name="dgrdNameSearch" Visibility="Visible" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="20 5 20 5" MinHeight="100" MaxHeight="800" MaxWidth="600" SelectionMode="Single" AutoGenerateColumns="False" CanUserResizeColumns="True" IsReadOnly="True"  VerticalAlignment="Top" SelectionChanged="dgrdNameSearch_SelectionChanged" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Path=Name, NotifyOnTargetUpdated=True}" FontSize="20"/>
+                        <DataGridTextColumn Header="Category" Width="*" Binding="{Binding Path=Category, NotifyOnTargetUpdated=True}" FontSize="20"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid x:Name="grdRegion" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lblRegionTitle" Content="Please select the color that corresponds with where you would like to grow your garden..." FontSize="25" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Image x:Name="imgRegion" Margin="20" Grid.Row="1" Grid.Column="1" Source="../Images/Plants/RegionMap.png"></Image>
+                <Grid Grid.Row="1" Grid.Column="0" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </Grid.Resources>
+                    <!--<Button x:Name="btnRegion1"   Style="{StaticResource button1}" Grid.Row="0" Grid.Column="0" Content="Region 1" Background="#ffffff"    Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion2"   Style="{StaticResource button1}" Grid.Row="0" Grid.Column="1" Content="Region 2" Background="#ffffff"    Click="Click_Region"></Button>-->
+                    <Button x:Name="btnRegion3"   Style="{StaticResource button1}" Grid.Row="1" Grid.Column="0" Content="Region 3" Background="#FF4D344E"  Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion4"   Style="{StaticResource button1}" Grid.Row="1" Grid.Column="1" Content="Region 4" Background="#FF6B6EFF"  Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion5"   Style="{StaticResource button1}" Grid.Row="2" Grid.Column="0" Content="Region 5" Background="#FF1B9442"  Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion6"   Style="{StaticResource button1}" Grid.Row="2" Grid.Column="1" Content="Region 6" Background="#FF38D42B"  Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion7"   Style="{StaticResource button1}" Grid.Row="3" Grid.Column="0" Content="Region 7" Background="#FFFCFF2E"  Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion8"   Style="{StaticResource button1}" Grid.Row="3" Grid.Column="1" Content="Region 8" Background="#FFFF893B"  Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion9"   Style="{StaticResource button1}" Grid.Row="4" Grid.Column="0" Content="Region 9" Background="#FFF56632"  Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion10"  Style="{StaticResource button1}" Grid.Row="4" Grid.Column="1" Content="Region 10" Background="#FFFDA8A8" Click="Click_Region"></Button>
+                    <!--<Button x:Name="btnRegion11" Grid.Row="5" Grid.Column="0" Content="Region 11" Background="#FFFDA8A8" Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion12" Grid.Row="5" Grid.Column="1" Content="Region 12" Background="#FFFDA8A8" Click="Click_Region"></Button>
+                    <Button x:Name="btnRegion13" Grid.Row="6" Grid.Column="0" Content="Region 13" Background="#FFFDA8A8" Click="Click_Region"></Button>-->
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdPlantList" Visibility="Hidden">
+                <ItemsControl x:Name="icPlants">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="tbPlantName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,20" Text="{Binding Name}" FontSize="50" Foreground="#FF19320B" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                <Image x:Name="imgPlant" Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" MaxHeight="200" MaxWidth="200" Source="{Binding ImageUri}"></Image>
+                                <TextBlock x:Name="tbPlantCategory" Grid.Row="1" Grid.Column="1" Margin="20,10,20,0" Text="{Binding Category}" TextWrapping="Wrap" FontSize="15"/>
+                                <TextBlock x:Name="tbPlantSeasont" Grid.Row="2" Grid.Column="1" Margin="20,10,20,0" Text="{Binding Season}" TextWrapping="Wrap" FontSize="15"/>
+                                <TextBlock x:Name="tbDateCreated" Grid.Row="3" Grid.Column="1" Text="{Binding Description}" FontSize="20" Foreground="#FF19320B" />
+                                <Button Style="{StaticResource button1}" x:Name="btnAddNutrient" Grid.Row="4" Grid.Column="1" Content="Add Nutrients" Height="45" Command="{Binding 
+                                        RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.MyCommand}" Click="btnAddNutrient_Click" 
+                                        CommandParameter="{Binding}" Tag="{Binding}" Loaded="btnAddNutrient_Loaded" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

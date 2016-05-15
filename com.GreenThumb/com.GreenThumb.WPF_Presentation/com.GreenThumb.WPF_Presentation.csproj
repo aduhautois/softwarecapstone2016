@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83899C61-26D0-46D6-89EC-0052FF8D8D0A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.GreenThumb.WPF_Presentation</RootNamespace>
+    <AssemblyName>com.GreenThumb.WPF_Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AddRequest.xaml.cs">
+      <DependentUpon>AddRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\AdminProcessExpertRequests.xaml.cs">
+      <DependentUpon>AdminProcessExpertRequests.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\AdminProfile.xaml.cs">
+      <DependentUpon>AdminProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\ProfileAdmin.xaml.cs" />
+    <Compile Include="AdminPages\RegionPage.xaml.cs" />
+    <Compile Include="AdminPages\UserRole.xaml.cs" />
+    <Compile Include="AdminPages\ViewUsers.xaml.cs">
+      <DependentUpon>ViewUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\AddNutrientsToPlant.xaml.cs">
+      <DependentUpon>AddNutrientsToPlant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\CreatePlant.xaml.cs">
+      <DependentUpon>CreatePlant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ExpertAdvice.xaml.cs">
+      <DependentUpon>ExpertAdvice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ExpertAdviceRespond.xaml.cs">
+      <DependentUpon>ExpertAdviceRespond.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\RecipeDetail.xaml.cs">
+      <DependentUpon>RecipeDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\RequestExpert.xaml.cs">
+      <DependentUpon>RequestExpert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\SearchForQuestions.xaml.cs">
+      <DependentUpon>SearchForQuestions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\UploadTemplates.xaml.cs">
+      <DependentUpon>UploadTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ViewBluePrints.xaml.cs">
+      <DependentUpon>ViewBluePrints.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ViewPlants.xaml.cs">
+      <DependentUpon>ViewPlants.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ViewRecipe.xaml.cs">
+      <DependentUpon>ViewRecipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ViewTemplates.xaml.cs">
+      <DependentUpon>ViewTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\AssignTask.xaml.cs">
+      <DependentUpon>AssignTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\ViewGroups.xaml.cs">
+      <DependentUpon>ViewGroups.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HomePages\ViewBlog.xaml.cs">
+      <DependentUpon>ViewBlog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\CompleteTask.xaml.cs">
+      <DependentUpon>CompleteTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\CreateOrganization.xaml.cs">
+      <DependentUpon>CreateOrganization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\ManageGroup.xaml.cs">
+      <DependentUpon>ManageGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\SelectTasks.xaml.cs">
+      <DependentUpon>SelectTasks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HomePages\CreateBlog.xaml.cs">
+      <DependentUpon>CreateBlog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\ViewTasks.xaml.cs">
+      <DependentUpon>ViewTasks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePages\MessageCompose.xaml.cs">
+      <DependentUpon>MessageCompose.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePages\Messages.xaml.cs">
+      <DependentUpon>Messages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePages\ProfileMenu.xaml.cs" />
+    <Compile Include="RegionPage.xaml.cs" />
+    <Compile Include="ExpertPages\UploadBlueprint.xaml.cs">
+      <DependentUpon>UploadBlueprint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VolunteerPages\EditVolunteerAvailability.xaml.cs">
+      <DependentUpon>EditVolunteerAvailability.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VolunteerPages\VolunteerHome.xaml.cs">
+      <DependentUpon>VolunteerHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VolunteerPages\VolunteerSignUp.xaml.cs">
+      <DependentUpon>VolunteerSignUp.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPages\AdminHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPages\AdminProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPages\ProfileAdmin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminPages\RegionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminPages\UserRole.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminPages\ViewUsers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\AddNutrientsToPlant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\CreatePlant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\ExpertGardenTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPages\AdminProcessExpertRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpertPages\ExpertAdvice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\ExpertAdviceRespond.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\ExpertHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpertPages\RecipeDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\RecipeInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpertPages\RequestExpert.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\UploadTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\ViewBluePrints.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\ViewPlants.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\ViewRecipe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\ViewTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GardenPages\AssignTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\ViewGroups.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HomePages\ViewBlog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpertPages\ViewGardenTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExpertPages\SearchForQuestions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GardenPages\AdminMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\CreateOrganization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\GroupMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\CompleteTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\GardenMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\ManageGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\SelectTasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\ViewGarden.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomePages\CreateBlog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\ViewTasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\CreateGarden.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomeContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="AdminPages\AdminHome.xaml.cs">
+      <DependentUpon>AdminHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ExpertGardenTemplate.xaml.cs">
+      <DependentUpon>ExpertGardenTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ExpertHome.xaml.cs">
+      <DependentUpon>ExpertHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\GroupMain.xaml.cs">
+      <DependentUpon>GroupMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\RecipeInput.xaml.cs">
+      <DependentUpon>RecipeInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpertPages\ViewGardenTemplate.xaml.cs">
+      <DependentUpon>ViewGardenTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\GardenMain.xaml.cs">
+      <DependentUpon>GardenMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\ViewGarden.xaml.cs">
+      <DependentUpon>ViewGarden.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\ManageTask.xaml.cs">
+      <DependentUpon>ManageTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrgGroupLeaderManager.xaml.cs">
+      <DependentUpon>OrgGroupLeaderManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrgManageUserGroups.xaml.cs">
+      <DependentUpon>OrgManageUserGroups.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\CreateGarden.xaml.cs">
+      <DependentUpon>CreateGarden.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePages\EditPersonalInfo.xaml.cs">
+      <DependentUpon>EditPersonalInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePages\ProfileMain.xaml.cs">
+      <DependentUpon>ProfileMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GardenPages\RequestGroupLeader.xaml.cs">
+      <DependentUpon>RequestGroupLeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserEditPersonalInfo.xaml.cs">
+      <DependentUpon>UserEditPersonalInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewGroups.xaml.cs">
+      <DependentUpon>ViewGroups.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="GardenPages\AdminMessages.xaml.cs">
+      <DependentUpon>AdminMessages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GardenPages\CreateGarden.xaml.cs">
+      <DependentUpon>CreateGarden.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HomeContent.xaml.cs">
+      <DependentUpon>HomeContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="GardenPages\ManageTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewUserCreation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewUserInformation.xaml">
+    </Page>
+    <Page Include="OrgGroupLeaderManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrgManageUserGroups.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\admin_profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\CreateGarden.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilePages\EditPersonalInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilePages\MessageCompose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilePages\Messages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilePages\ProfileMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GardenPages\RequestGroupLeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProfilePages\ProfileMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpertPages\UploadBlueprint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserEditPersonalInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewGroups.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VolunteerPages\EditVolunteerAvailability.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VolunteerPages\VolunteerHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VolunteerPages\VolunteerSignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NewUserCreation.xaml.cs">
+      <DependentUpon>NewUserCreation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewUserInformation.xaml.cs">
+      <DependentUpon>NewUserInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\admin_profile.xaml.cs">
+      <DependentUpon>admin_profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <None Include="scripts\tinymce\langs\readme.md" />
+    <None Include="scripts\tinymce\skins\lightgray\fonts\readme.md" />
+    <None Include="scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <None Include="scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
+    <None Include="scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Resource Include="scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <None Include="scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <None Include="scripts\tinymce\skins\lightgray\fonts\tinymce-small.json" />
+    <None Include="scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\com.GreenThumb.BusinessLogic\com.GreenThumb.BusinessLogic.csproj">
+      <Project>{0201a9f7-d176-42ad-b94f-34ec2606a542}</Project>
+      <Name>com.GreenThumb.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.GreenThumb.BusinessObjects\com.GreenThumb.BusinessObjects.csproj">
+      <Project>{db00749e-ff51-41c2-997b-6dbea2dd025d}</Project>
+      <Name>com.GreenThumb.BusinessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="scripts\tinymce\skins\lightgray\img\trans.gif" />
+    <Resource Include="scripts\tinymce\skins\lightgray\img\object.gif" />
+    <Resource Include="scripts\tinymce\skins\lightgray\img\loader.gif" />
+    <Resource Include="scripts\tinymce\skins\lightgray\img\anchor.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\ul.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\section.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\pre.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\p.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\ol.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\hgroup.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\h6.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\h5.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\h4.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\h3.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\h2.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\h1.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\figure.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\dl.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\div.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\blockquote.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\aside.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\article.gif" />
+    <Resource Include="scripts\tinymce\plugins\visualblocks\img\address.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Resource Include="scripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Resource Include="scripts\tinymce\plugins\compat3x\img\tabs.gif" />
+    <Resource Include="scripts\tinymce\plugins\compat3x\img\progress.gif" />
+    <Resource Include="scripts\tinymce\plugins\compat3x\img\menu_check.gif" />
+    <Resource Include="scripts\tinymce\plugins\compat3x\img\menu_arrow.gif" />
+    <Resource Include="scripts\tinymce\plugins\compat3x\img\items.gif" />
+    <Resource Include="scripts\tinymce\plugins\compat3x\img\icons.gif" />
+    <Resource Include="scripts\tinymce\plugins\compat3x\img\buttons.png" />
+    <Resource Include="scripts\tinymce\license.txt" />
+    <Resource Include="Images\HomeBackground2.jpg" />
+    <Content Include="scripts\tinymce\jquery.tinymce.min.js" />
+    <Content Include="scripts\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\anchor\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\autolink\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\autoresize\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\autosave\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\bbcode\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\charmap\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="scripts\tinymce\plugins\codesample\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\code\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\colorpicker\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\compat3x\css\dialog.css" />
+    <Content Include="scripts\tinymce\plugins\compat3x\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\compat3x\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\compat3x\tiny_mce_popup.js" />
+    <Content Include="scripts\tinymce\plugins\compat3x\utils\editable_selects.js" />
+    <Content Include="scripts\tinymce\plugins\compat3x\utils\form_utils.js" />
+    <Content Include="scripts\tinymce\plugins\compat3x\utils\mctabs.js" />
+    <Content Include="scripts\tinymce\plugins\compat3x\utils\validate.js" />
+    <Content Include="scripts\tinymce\plugins\contextmenu\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\directionality\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\example\dialog.html" />
+    <Content Include="scripts\tinymce\plugins\example\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\example_dependency\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\fullpage\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\fullscreen\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\hr\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\imagetools\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\image\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\importcss\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\insertdatetime\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\layer\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\legacyoutput\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\link\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\lists\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="scripts\tinymce\plugins\media\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\nonbreaking\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\noneditable\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\pagebreak\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\paste\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\preview\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\print\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\save\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\searchreplace\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\spellchecker\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\tabfocus\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\table\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\template\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\textcolor\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\textpattern\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="scripts\tinymce\plugins\visualblocks\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\visualchars\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="scripts\tinymce\plugins\wordcount\plugin.js" />
+    <Content Include="scripts\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="scripts\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="scripts\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="scripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="scripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="scripts\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="scripts\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="scripts\tinymce\themes\modern\theme.js" />
+    <Content Include="scripts\tinymce\themes\modern\theme.min.js" />
+    <Content Include="scripts\tinymce\tinymce.js" />
+    <Content Include="scripts\tinymce\tinymce.min.js" />
+    <Resource Include="Images\Plants\Annuals.png" />
+    <Resource Include="Images\Plants\Bushes.png" />
+    <Resource Include="Images\Plants\Flowers.png" />
+    <Resource Include="Images\Plants\Fruit.png" />
+    <Resource Include="Images\Plants\Herbs.png" />
+    <Resource Include="Images\Plants\Perennials.png" />
+    <Resource Include="Images\Plants\RegionMap.png" />
+    <Resource Include="Images\Plants\Trees.png" />
+    <Resource Include="Images\Plants\Vegetables.png" />
+    <Resource Include="Images\usda_plant.jpg" />
+    <Resource Include="Images\RegionId.jpeg" />
+    <Resource Include="Images\greenThumb.png" />
+    <Resource Include="Images\cutting-board-with-vegetables.jpg" />
+    <Resource Include="Images\Leaf.png" />
+    <Content Include="Images\organic-vegetable-garden-1319014.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Blueprints\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

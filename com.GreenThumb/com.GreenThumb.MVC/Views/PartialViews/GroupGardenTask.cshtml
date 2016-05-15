@@ -1,0 +1,20 @@
+﻿@*Poonam Dubey*@
+@*14th April 2016*@
+@*Partial view To view Gardens*@
+@*Edited by: Ash Duhautois 05/04/2016
+    Formatted styling*@
+
+@model com.GreenThumb.BusinessObjects.Group
+
+@foreach (com.GreenThumb.BusinessObjects.Garden GardenInfo in Model.GardenList)
+{
+    <div class="group-members">
+        <h2>@Html.RadioButton("radioSelection", false, new { @id = GardenInfo.GardenID + "_Radio", @onclick = "radioClick(" + GardenInfo.GardenID + ")" })
+        @Model.Name</h2>
+        <p class="text-right">Garden: @GardenInfo.GardenName</p>
+        <p class="text-right">Description: @Html.Raw(GardenInfo.GardenDescription)</p>
+        <p class="text-right">Region: @GardenInfo.GardenRegion</p>
+    </div>
+    <br />
+}
+<script src="~/Scripts/GardenTask.js"></script>

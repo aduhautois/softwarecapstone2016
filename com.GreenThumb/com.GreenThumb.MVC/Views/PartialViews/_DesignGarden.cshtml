@@ -1,0 +1,502 @@
+﻿@*Created by: Ash Duhautois 05/06/2016*@
+
+<h3>Design Your Garden</h3>
+
+<div id="garden-designer">
+    <div>
+        <canvas id="c" width="700" height="700" style="border:1px solid #aaa; margin: auto; display: block; background-color: white;"></canvas>
+    </div>
+    <br>
+    <div>
+        <button id="drawing-mode" class="green-btn">Cancel drawing mode</button>
+        <br>
+        <button id="clear-canvas" class="green-btn">Clear</button>
+        <br>
+
+        <div id="drawing-mode-options">
+            <label for="drawing-mode-selector">Mode:</label>
+            <select id="drawing-mode-selector" style="color: black;">
+                <option>Pencil</option>
+                <option>Spray</option>
+                <option>Pattern</option>
+                <option>hline</option>
+                <option>vline</option>
+                <option>square</option>
+                <option>diamond</option>
+                <option>stone</option>
+                <option>grass</option>
+                <option>dirt</option>
+                <option>anise</option>
+                <option>asparagus</option>
+                <option>augula</option>
+                <option>beetroot</option>
+                <option>blackbeans</option>
+                <option>blackeyedpea</option>
+                <option>bokchoy</option>
+                <option>broccoli</option>
+                <option>cabbage</option>
+                <option>carrot</option>
+                <option>cauliflower</option>
+                <option>celery</option>
+                <option>champignonmushroom</option>
+                <option>chilipepper</option>
+                <option>corn</option>
+                <option>cucumber</option>
+                <option>eggplant</option>
+                <option>endive</option>
+                <option>garlic</option>
+                <option>ginger</option>
+                <option>greenbeans</option>
+                <option>lettuce</option>
+                <option>marrow</option>
+                <option>okra</option>
+                <option>onion</option>
+                <option>pea</option>
+                <option>potato</option>
+                <option>pumpkin</option>
+                <option>radicchio</option>
+                <option>radish</option>
+                <option>redbellpepper</option>
+                <option>soybeans</option>
+                <option>tomato</option>
+                <option>zuchini</option>
+            </select>
+            <br>
+
+            <label for="drawing-line-width">Line width:</label>
+            <span class="info">30</span>
+            <input type="range" value="30" min="0" max="150" id="drawing-line-width">
+            <br>
+
+            <label for="drawing-color">Line color:</label>
+            <input type="color" value="#005E7A" id="drawing-color">
+            <br>
+
+            <button id="to-svg" class="green-btn">Save SVG</button>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="~/Scripts/fabric.min.js"></script>
+    <script>
+            $(document).ready(function () {
+                var canvas = this.__canvas = new fabric.Canvas('c', {
+                    isDrawingMode: true
+                });
+
+                fabric.Object.prototype.transparentCorners = false;
+
+                $('#clear-canvas').click(function (e) {
+                    canvas.clear();
+                });
+
+                $('#drawing-mode').click(function() {
+                    canvas.isDrawingMode = !canvas.isDrawingMode;
+                    if (canvas.isDrawingMode) {
+                        $('#drawing-mode').html('Cancel Drawing Mode');
+                        $('#drawing-mode-options').show();
+                    } else {
+                        $('#drawing-mode').html('Enter Drawing Mode');
+                        $('#drawing-mode-options').hide();
+                    }
+                });
+
+                if (fabric.PatternBrush) {
+                    var vLinePatternBrush = new fabric.PatternBrush(canvas);
+                    vLinePatternBrush.getPatternSrc = function() {
+
+                        var patternCanvas = fabric.document.createElement('canvas');
+                        patternCanvas.width = patternCanvas.height = 10;
+                        var ctx = patternCanvas.getContext('2d');
+
+                        ctx.strokeStyle = this.color;
+                        ctx.lineWidth = 5;
+                        ctx.beginPath();
+                        ctx.moveTo(0, 5);
+                        ctx.lineTo(10, 5);
+                        ctx.closePath();
+                        ctx.stroke();
+
+                        return patternCanvas;
+                    };
+
+                    var hLinePatternBrush = new fabric.PatternBrush(canvas);
+                    hLinePatternBrush.getPatternSrc = function() {
+
+                        var patternCanvas = fabric.document.createElement('canvas');
+                        patternCanvas.width = patternCanvas.height = 10;
+                        var ctx = patternCanvas.getContext('2d');
+
+                        ctx.strokeStyle = this.color;
+                        ctx.lineWidth = 5;
+                        ctx.beginPath();
+                        ctx.moveTo(5, 0);
+                        ctx.lineTo(5, 10);
+                        ctx.closePath();
+                        ctx.stroke();
+
+                        return patternCanvas;
+                    };
+
+                    var squarePatternBrush = new fabric.PatternBrush(canvas);
+                    squarePatternBrush.getPatternSrc = function() {
+
+                        var squareWidth = 10,
+                            squareDistance = 2;
+
+                        var patternCanvas = fabric.document.createElement('canvas');
+                        patternCanvas.width = patternCanvas.height = squareWidth + squareDistance;
+                        var ctx = patternCanvas.getContext('2d');
+
+                        ctx.fillStyle = this.color;
+                        ctx.fillRect(0, 0, squareWidth, squareWidth);
+
+                        return patternCanvas;
+                    };
+
+                    var diamondPatternBrush = new fabric.PatternBrush(canvas);
+                    diamondPatternBrush.getPatternSrc = function() {
+
+                        var squareWidth = 10,
+                            squareDistance = 5;
+                        var patternCanvas = fabric.document.createElement('canvas');
+                        var rect = new fabric.Rect({
+                            width: squareWidth,
+                            height: squareWidth,
+                            angle: 45,
+                            fill: this.color
+                        });
+
+                        var canvasWidth = rect.getBoundingRectWidth();
+
+                        patternCanvas.width = patternCanvas.height = canvasWidth + squareDistance;
+                        rect.set({
+                            left: canvasWidth / 2,
+                            top: canvasWidth / 2
+                        });
+
+                        var ctx = patternCanvas.getContext('2d');
+                        rect.render(ctx);
+
+                        return patternCanvas;
+                    };
+
+                    var stone = new Image();
+                    stone.src = 'http://www.pixeledpaper.com/shared/icons/stone.png';
+                    var stonePatternBrush = new fabric.PatternBrush(canvas);
+                    stonePatternBrush.source = stone;
+
+                    var grass = new Image();
+                    grass.src = 'http://www.pixeledpaper.com/shared/icons/grass.png';
+                    var grassPatternBrush = new fabric.PatternBrush(canvas);
+                    grassPatternBrush.source = grass;
+
+                    var dirt = new Image();
+                    dirt.src = 'http://www.pixeledpaper.com/shared/icons/dirt.png';
+                    var dirtPatternBrush = new fabric.PatternBrush(canvas);
+                    dirtPatternBrush.source = dirt;
+
+                    var anise = new Image();
+                    anise.src = 'http://www.pixeledpaper.com/shared/icons/anise.png';
+                    var anisePatternBrush = new fabric.PatternBrush(canvas);
+                    anisePatternBrush.source = anise;
+
+                    var asparagus = new Image();
+                    asparagus.src = 'http://www.pixeledpaper.com/shared/icons/asparagus.png';
+                    var asparagusPatternBrush = new fabric.PatternBrush(canvas);
+                    asparagusPatternBrush.source = asparagus;
+
+                    var augula = new Image();
+                    augula.src = 'http://www.pixeledpaper.com/shared/icons/augula.png';
+                    var augulaPatternBrush = new fabric.PatternBrush(canvas);
+                    augulaPatternBrush.source = augula;
+
+                    var beetroot = new Image();
+                    beetroot.src = 'http://www.pixeledpaper.com/shared/icons/beetroot.png';
+                    var beetrootPatternBrush = new fabric.PatternBrush(canvas);
+                    beetrootPatternBrush.source = beetroot;
+
+                    var blackbeans = new Image();
+                    blackbeans.src = 'http://www.pixeledpaper.com/shared/icons/blackbeans.png';
+                    var blackbeansPatternBrush = new fabric.PatternBrush(canvas);
+                    blackbeansPatternBrush.source = blackbeans;
+
+                    var blackeyedpea = new Image();
+                    blackeyedpea.src = 'http://www.pixeledpaper.com/shared/icons/blackeyedpea.png';
+                    var blackeyedpeaPatternBrush = new fabric.PatternBrush(canvas);
+                    blackeyedpeaPatternBrush.source = blackeyedpea;
+
+                    var bokchoy = new Image();
+                    bokchoy.src = 'http://www.pixeledpaper.com/shared/icons/bokchoy.png';
+                    var bokchoyPatternBrush = new fabric.PatternBrush(canvas);
+                    bokchoyPatternBrush.source = bokchoy;
+
+                    var broccoli = new Image();
+                    broccoli.src = 'http://www.pixeledpaper.com/shared/icons/broccoli.png';
+                    var broccoliPatternBrush = new fabric.PatternBrush(canvas);
+                    broccoliPatternBrush.source = broccoli;
+
+                    var cabbage = new Image();
+                    cabbage.src = 'http://www.pixeledpaper.com/shared/icons/cabbage.png';
+                    var cabbagePatternBrush = new fabric.PatternBrush(canvas);
+                    cabbagePatternBrush.source = cabbage;
+
+                    var carrot = new Image();
+                    carrot.src = 'http://www.pixeledpaper.com/shared/icons/carrot.png';
+                    var carrotPatternBrush = new fabric.PatternBrush(canvas);
+                    carrotPatternBrush.source = carrot;
+
+                    var cauliflower = new Image();
+                    cauliflower.src = 'http://www.pixeledpaper.com/shared/icons/cauliflower.png';
+                    var cauliflowerPatternBrush = new fabric.PatternBrush(canvas);
+                    cauliflowerPatternBrush.source = cauliflower;
+
+                    var celery = new Image();
+                    celery.src = 'http://www.pixeledpaper.com/shared/icons/celery.png';
+                    var celeryPatternBrush = new fabric.PatternBrush(canvas);
+                    celeryPatternBrush.source = celery;
+
+                    var champignonmushroom = new Image();
+                    champignonmushroom.src = 'http://www.pixeledpaper.com/shared/icons/champignonmushroom.png';
+                    var champignonmushroomPatternBrush = new fabric.PatternBrush(canvas);
+                    champignonmushroomPatternBrush.source = champignonmushroom;
+
+                    var chilipepper = new Image();
+                    chilipepper.src = 'http://www.pixeledpaper.com/shared/icons/chilipepper.png';
+                    var chilipepperPatternBrush = new fabric.PatternBrush(canvas);
+                    chilipepperPatternBrush.source = chilipepper;
+
+                    var corn = new Image();
+                    corn.src = 'http://www.pixeledpaper.com/shared/icons/corn.png';
+                    var cornPatternBrush = new fabric.PatternBrush(canvas);
+                    cornPatternBrush.source = corn;
+
+                    var cucumber = new Image();
+                    cucumber.src = 'http://www.pixeledpaper.com/shared/icons/cucumber.png';
+                    var cucumberPatternBrush = new fabric.PatternBrush(canvas);
+                    cucumberPatternBrush.source = cucumber;
+
+                    var eggplant = new Image();
+                    eggplant.src = 'http://www.pixeledpaper.com/shared/icons/eggplant.png';
+                    var eggplantPatternBrush = new fabric.PatternBrush(canvas);
+                    eggplantPatternBrush.source = eggplant;
+
+                    var endive = new Image();
+                    endive.src = 'http://www.pixeledpaper.com/shared/icons/endive.png';
+                    var endivePatternBrush = new fabric.PatternBrush(canvas);
+                    endivePatternBrush.source = endive;
+
+                    var garlic = new Image();
+                    garlic.src = 'http://www.pixeledpaper.com/shared/icons/garlic.png';
+                    var garlicPatternBrush = new fabric.PatternBrush(canvas);
+                    garlicPatternBrush.source = garlic;
+
+                    var ginger = new Image();
+                    ginger.src = 'http://www.pixeledpaper.com/shared/icons/ginger.png';
+                    var gingerPatternBrush = new fabric.PatternBrush(canvas);
+                    gingerPatternBrush.source = ginger;
+
+                    var greenbeans = new Image();
+                    greenbeans.src = 'http://www.pixeledpaper.com/shared/icons/greenbeans.png';
+                    var greenbeansPatternBrush = new fabric.PatternBrush(canvas);
+                    greenbeansPatternBrush.source = greenbeans;
+
+                    var leek = new Image();
+                    leek.src = 'http://www.pixeledpaper.com/shared/icons/leek.png';
+                    var leekPatternBrush = new fabric.PatternBrush(canvas);
+                    leekPatternBrush.source = leek;
+
+                    var lettuce = new Image();
+                    lettuce.src = 'http://www.pixeledpaper.com/shared/icons/lettuce.png';
+                    var lettucePatternBrush = new fabric.PatternBrush(canvas);
+                    lettucePatternBrush.source = lettuce;
+
+                    var marrow = new Image();
+                    marrow.src = 'http://www.pixeledpaper.com/shared/icons/marrow.png';
+                    var marrowPatternBrush = new fabric.PatternBrush(canvas);
+                    marrowPatternBrush.source = marrow;
+
+                    var okra = new Image();
+                    okra.src = 'http://www.pixeledpaper.com/shared/icons/okra.png';
+                    var okraPatternBrush = new fabric.PatternBrush(canvas);
+                    okraPatternBrush.source = okra;
+
+                    var onion = new Image();
+                    onion.src = 'http://www.pixeledpaper.com/shared/icons/onion.png';
+                    var onionPatternBrush = new fabric.PatternBrush(canvas);
+                    onionPatternBrush.source = onion;
+
+                    var pea = new Image();
+                    pea.src = 'http://www.pixeledpaper.com/shared/icons/pea.png';
+                    var peaPatternBrush = new fabric.PatternBrush(canvas);
+                    peaPatternBrush.source = pea;
+
+                    var potato = new Image();
+                    potato.src = 'http://www.pixeledpaper.com/shared/icons/potato.png';
+                    var potatoPatternBrush = new fabric.PatternBrush(canvas);
+                    potatoPatternBrush.source = potato;
+
+                    var pumpkin = new Image();
+                    pumpkin.src = 'http://www.pixeledpaper.com/shared/icons/pumpkin.png';
+                    var pumpkinPatternBrush = new fabric.PatternBrush(canvas);
+                    pumpkinPatternBrush.source = pumpkin;
+
+                    var radicchio = new Image();
+                    radicchio.src = 'http://www.pixeledpaper.com/shared/icons/radicchio.png';
+                    var radicchioPatternBrush = new fabric.PatternBrush(canvas);
+                    radicchioPatternBrush.source = radicchio;
+
+                    var radish = new Image();
+                    radish.src = 'http://www.pixeledpaper.com/shared/icons/radish.png';
+                    var radishPatternBrush = new fabric.PatternBrush(canvas);
+                    radishPatternBrush.source = radish;
+
+                    var redbellpepper = new Image();
+                    redbellpepper.src = 'http://www.pixeledpaper.com/shared/icons/redbellpepper.png';
+                    var redbellpepperPatternBrush = new fabric.PatternBrush(canvas);
+                    redbellpepperPatternBrush.source = redbellpepper;
+
+                    var soybeans = new Image();
+                    soybeans.src = 'http://www.pixeledpaper.com/shared/icons/soybeans.png';
+                    var soybeansPatternBrush = new fabric.PatternBrush(canvas);
+                    soybeansPatternBrush.source = soybeans;
+
+                    var tomato = new Image();
+                    tomato.src = 'http://www.pixeledpaper.com/shared/icons/tomato.png';
+                    var tomatoPatternBrush = new fabric.PatternBrush(canvas);
+                    tomatoPatternBrush.source = tomato;
+
+                    var zuchini = new Image();
+                    zuchini.src = 'http://www.pixeledpaper.com/shared/icons/zuchini.png';
+                    var zuchiniPatternBrush = new fabric.PatternBrush(canvas);
+                    zuchiniPatternBrush.source = zuchini;
+                }
+
+                $('#drawing-mode-selector').change(function () {
+                    if (this.value === 'hline') {
+                        canvas.freeDrawingBrush = vLinePatternBrush;
+                    } else if (this.value === 'vline') {
+                        canvas.freeDrawingBrush = hLinePatternBrush;
+                    } else if (this.value === 'square') {
+                        canvas.freeDrawingBrush = squarePatternBrush;
+                    } else if (this.value === 'diamond') {
+                        canvas.freeDrawingBrush = diamondPatternBrush;
+                    } else if (this.value === 'stone') {
+                        canvas.freeDrawingBrush = stonePatternBrush;
+                    } else if (this.value === 'grass') {
+                        canvas.freeDrawingBrush = grassPatternBrush;
+                    } else if (this.value === 'dirt') {
+                        canvas.freeDrawingBrush = dirtPatternBrush;
+                    } else if (this.value === 'anise') {
+                        canvas.freeDrawingBrush = anisePatternBrush;
+                    } else if (this.value === 'asparagus') {
+                        canvas.freeDrawingBrush = asparagusPatternBrush;
+                    } else if (this.value === 'augula') {
+                        canvas.freeDrawingBrush = augulaPatternBrush;
+                    } else if (this.value === 'beetroot') {
+                        canvas.freeDrawingBrush = beetrootPatternBrush;
+                    } else if (this.value === 'blackbeans') {
+                        canvas.freeDrawingBrush = blackbeansPatternBrush;
+                    } else if (this.value === 'blackeyedpea') {
+                        canvas.freeDrawingBrush = blackeyedpeaPatternBrush;
+                    } else if (this.value === 'bokchoy') {
+                        canvas.freeDrawingBrush = bokchoyPatternBrush;
+                    } else if (this.value === 'broccoli') {
+                        canvas.freeDrawingBrush = broccoliPatternBrush;
+                    } else if (this.value === 'cabbage') {
+                        canvas.freeDrawingBrush = cabbagePatternBrush;
+                    } else if (this.value === 'carrot') {
+                        canvas.freeDrawingBrush = carrotPatternBrush;
+                    } else if (this.value === 'cauliflower') {
+                        canvas.freeDrawingBrush = cauliflowerPatternBrush;
+                    } else if (this.value === 'celery') {
+                        canvas.freeDrawingBrush = celeryPatternBrush;
+                    } else if (this.value === 'champignonmushroom') {
+                        canvas.freeDrawingBrush = champignonmushroomPatternBrush;
+                    } else if (this.value === 'chilipepper') {
+                        canvas.freeDrawingBrush = chilipepperPatternBrush;
+                    } else if (this.value === 'corn') {
+                        canvas.freeDrawingBrush = cornPatternBrush;
+                    } else if (this.value === 'cucumber') {
+                        canvas.freeDrawingBrush = cucumberPatternBrush;
+                    } else if (this.value === 'eggplant') {
+                        canvas.freeDrawingBrush = eggplantPatternBrush;
+                    } else if (this.value === 'endive') {
+                        canvas.freeDrawingBrush = endivePatternBrush;
+                    } else if (this.value === 'garlic') {
+                        canvas.freeDrawingBrush = garlicPatternBrush;
+                    } else if (this.value === 'ginger') {
+                        canvas.freeDrawingBrush = gingerPatternBrush;
+                    } else if (this.value === 'greenbeans') {
+                        canvas.freeDrawingBrush = greenbeansPatternBrush;
+                    } else if (this.value === 'leek') {
+                        canvas.freeDrawingBrush = leekPatternBrush;
+                    } else if (this.value === 'lettuce') {
+                        canvas.freeDrawingBrush = lettucePatternBrush;
+                    } else if (this.value === 'marrow') {
+                        canvas.freeDrawingBrush = marrowPatternBrush;
+                    } else if (this.value === 'okra') {
+                        canvas.freeDrawingBrush = okraPatternBrush;
+                    } else if (this.value === 'onion') {
+                        canvas.freeDrawingBrush = onionPatternBrush;
+                    } else if (this.value === 'pea') {
+                        canvas.freeDrawingBrush = peaPatternBrush;
+                    } else if (this.value === 'potato') {
+                        canvas.freeDrawingBrush = potatoPatternBrush;
+                    } else if (this.value === 'pumpkin') {
+                        canvas.freeDrawingBrush = pumpkinPatternBrush;
+                    } else if (this.value === 'radicchio') {
+                        canvas.freeDrawingBrush = radicchioPatternBrush;
+                    } else if (this.value === 'radish') {
+                        canvas.freeDrawingBrush = radishPatternBrush;
+                    } else if (this.value === 'redbellpepper') {
+                        canvas.freeDrawingBrush = redbellpepperPatternBrush;
+                    } else if (this.value === 'soybeans') {
+                        canvas.freeDrawingBrush = soybeansPatternBrush;
+                    } else if (this.value === 'tomato') {
+                        canvas.freeDrawingBrush = tomatoPatternBrush;
+                    } else if (this.value === 'zuchini') {
+                        canvas.freeDrawingBrush = zuchiniPatternBrush;
+                    } else {
+                        canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
+                    }
+
+                    if (canvas.freeDrawingBrush) {
+                        canvas.freeDrawingBrush.color = $('#drawing-color').val();
+                        canvas.freeDrawingBrush.width = parseInt($('#drawing-line-width').val(), 10) || 1;
+                        canvas.freeDrawingBrush.shadowBlur = parseInt($('#drawing-shadow-width').val(), 10) || 0;
+                    }
+                });
+
+                $('#drawing-color').change(function () {
+                    canvas.freeDrawingBrush.color = this.value;
+                });
+                $('#drawing-shadow-color').change(function () {
+                    canvas.freeDrawingBrush.shadowColor = this.value;
+                });
+                $('#drawing-line-width').change(function () {
+                    canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+                    $(this).prev().html(this.value)
+                });
+                $('#drawing-shadow-widht').change(function () {
+                    canvas.freeDrawingBrush.shadowBlur = parseInt(this.value, 10) || 0;
+                    $(this).prev().html(this.value)
+                });
+                $('#drawing-shadow-offset').change(function () {
+                    canvas.freeDrawingBrush.shadowOffsetX =
+                        canvas.freeDrawingBrush.shadowOffsetY = parseInt(this.value, 10) || 0;
+                    $(this).prev().html(this.value)
+                });
+
+                if (canvas.freeDrawingBrush) {
+                    canvas.freeDrawingBrush.color = $('#drawing-color').val();
+                    canvas.freeDrawingBrush.width = parseInt($('#drawing-line-width').val(), 10) || 1;
+                    canvas.freeDrawingBrush.shadowBlur = 0;
+                }
+
+                $('#to-svg').click(function() {
+                    alert(canvas.toSVG());
+                });
+            });
+    </script>
+</div>

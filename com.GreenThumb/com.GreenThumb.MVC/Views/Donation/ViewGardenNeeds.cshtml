@@ -1,0 +1,14 @@
+﻿@*Modified By: Ash Duhautois 05/04/2016
+    Formatted styles*@
+
+@using com.GreenThumb.MVC.Models;
+@model GardenNeedsDetailViewModel
+@{
+    ViewBag.Title = "ViewGardenNeeds";
+}
+
+<h1>Garden Needs</h1>
+
+<div class="dark-div round">
+    @Html.Partial("~/Views/PartialViews/_NeedsAllowContribute.cshtml", Model.ActiveNeeds)
+</div>

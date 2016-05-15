@@ -1,0 +1,33 @@
+﻿<Page x:Class="com.GreenThumb.WPF_Presentation.ProfilePages.Messages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="368.955" d:DesignWidth="700"
+	Title="Messages">
+
+    <Grid Margin="40,40,10,40">
+        <DataGrid HorizontalAlignment="Left" x:Name="dataInbox" Margin="9,104,0,0" VerticalAlignment="Top" Height="104" Width="294" SelectionMode="Single" Cursor="Hand" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="dataInbox_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="From" Binding="{Binding MessageSender}" Width="Auto"/>
+                <DataGridTextColumn Header="Subject" Binding="{Binding MessageSubject}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding MessageDate}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid HorizontalAlignment="Left" x:Name="dataOutbox" Margin="340,104,-25,0" VerticalAlignment="Top" Height="104" Width="305" SelectionMode="Single" Cursor="Hand" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="dataOutbox_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="To" Binding="{Binding MessageReceiver}" Width="Auto"/>
+                <DataGridTextColumn Header="Subject" Binding="{Binding MessageSubject}" Width="Auto"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding MessageDate}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource button1}" Content="Get Messages" x:Name="btn_GetMessages"  HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top" Width="97" Click="btn_GetMessages_Click" Visibility="Hidden"/>
+        <Button Style="{StaticResource button1}" Content="Delete Message" x:Name="btn_DeleteMessages" HorizontalAlignment="Left" Margin="132,46,0,0" VerticalAlignment="Top" Click="btn_DeleteMessages_Click"/>
+        <Button Style="{StaticResource button1}" Content="Compose" x:Name="btn_ComposeMessage" HorizontalAlignment="Left" Margin="9,46,0,0" VerticalAlignment="Top" Click="btn_ComposeMessage_Click"/>
+        <TextBlock x:Name="txtMessage" Background="White" HorizontalAlignment="Left" Margin="9,232,0,0" TextWrapping="Wrap" Text="Select A Message" VerticalAlignment="Top" Height="57" Width="636"/>
+        <Label Content="Inbox" HorizontalAlignment="Left" Margin="80,82,0,0" VerticalAlignment="Top"/>
+        <Label Content="Outbox" HorizontalAlignment="Left" Margin="416,78,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
